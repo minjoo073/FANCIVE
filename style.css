@@ -391,3 +391,129 @@ img.el {
   justify-content: space-between;
   align-items: baseline;
 }
+
+/* =============================================
+   KEYFRAMES
+============================================= */
+
+@keyframes float-item {
+  0%, 100% { transform: rotate(30deg) translateY(0px); }
+  50%       { transform: rotate(30deg) translateY(-3px); }
+}
+
+@keyframes drift-ribbon {
+  0%, 100% { transform: translate(0px,  0px); }
+  40%      { transform: translate(-1px, -1px); }
+  70%      { transform: translate(1px,  1px); }
+}
+
+@keyframes entry-spread {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0px);
+  }
+}
+
+@keyframes entry-text {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0px);
+  }
+}
+
+/* =============================================
+   ENTRY — papers
+============================================= */
+
+.left-paper {
+  animation: entry-spread 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.right-paper {
+  animation: entry-spread 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+
+/* =============================================
+   REVEAL — static text elements
+============================================= */
+
+#left_desc_text,
+#left_mood1_text,
+#left_mood2_text,
+#left_category_text,
+#left_bottom_text,
+#left_page_number {
+  animation: entry-text 1.8s ease 1.8s both;
+}
+
+/* =============================================
+   FLOATING — right_item (air / layered feel)
+============================================= */
+
+#right_item {
+  animation: float-item 5s ease-in-out infinite;
+}
+
+/* =============================================
+   DRIFT — right_ribbon_image (fabric breathing)
+============================================= */
+
+#right_ribbon_image {
+  animation: drift-ribbon 7s ease-in-out infinite;
+}
+
+/* =============================================
+   HOVER — main images (editorial lens-in)
+============================================= */
+
+#left_main_image,
+#right_main_image {
+  transition: transform 1.4s ease;
+}
+
+#left_main_image:hover,
+#right_main_image:hover {
+  transform: scale(1.02);
+}
+
+/* =============================================
+   HOVER — detail image (archive texture)
+============================================= */
+
+#left_detail_image {
+  transition: filter 1.4s ease;
+}
+
+#left_detail_image:hover {
+  filter: contrast(1.08) brightness(1.03);
+}
+
+/* =============================================
+   HOVER — nav typography (editorial fade)
+============================================= */
+
+#right_about,
+#right_collection,
+#right_archive {
+  cursor: default;
+  transition: opacity 0.9s ease, letter-spacing 0.9s ease;
+}
+
+#right_about:hover,
+#right_collection:hover,
+#right_archive:hover {
+  opacity: 0.4;
+  letter-spacing: 0.05em;
+}
