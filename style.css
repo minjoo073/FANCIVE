@@ -284,6 +284,7 @@ img.el {
   height: 132px;
   object-fit: cover;
   z-index: 2;
+  transform: rotate(30deg);
 }
 
 #right_ribbon_image {
@@ -408,69 +409,141 @@ img.el {
 }
 
 @keyframes entry-spread {
-  from {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0px);
-  }
+  from { opacity: 0; filter: blur(4px); transform: translateY(16px); }
+  to   { opacity: 1; filter: blur(0px); transform: translateY(0px);  }
+}
+
+@keyframes entry-el {
+  from { opacity: 0; filter: blur(3px); transform: translateY(6px); }
+  to   { opacity: 1; filter: blur(0px); transform: translateY(0px); }
+}
+
+@keyframes entry-fade {
+  from { opacity: 0; filter: blur(3px); }
+  to   { opacity: 1; filter: blur(0px); }
 }
 
 @keyframes entry-text {
-  from {
-    opacity: 0;
-    filter: blur(3px);
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0px);
-  }
+  from { opacity: 0; filter: blur(3px); transform: translateY(8px); }
+  to   { opacity: 1; filter: blur(0px); transform: translateY(0px); }
 }
 
 /* =============================================
-   ENTRY — papers
+   INITIAL STATE — papers hidden until reveal
 ============================================= */
 
-.left-paper {
-  animation: entry-spread 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
+.left-paper,
 .right-paper {
-  animation: entry-spread 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  opacity: 0;
 }
 
 /* =============================================
-   REVEAL — static text elements
+   INTRO OVERLAY
 ============================================= */
 
-#left_desc_text,
-#left_mood1_text,
-#left_mood2_text,
-#left_category_text,
-#left_bottom_text,
-#left_page_number {
-  animation: entry-text 1.8s ease 1.8s both;
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: #1a1816;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.intro-stocking {
+  position: absolute;
+  height: 88vh;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0.82);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.intro-brand {
+  position: absolute;
+  bottom: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Switzer', sans-serif;
+  font-size: clamp(18px, 2vw, 38px);
+  font-weight: 200;
+  letter-spacing: 0.5em;
+  color: #dedad2;
+  opacity: 0;
+  filter: blur(8px);
+  white-space: nowrap;
 }
 
 /* =============================================
-   FLOATING — right_item (air / layered feel)
+   SPREAD REVEAL — triggered by .reveal-active
 ============================================= */
 
-#right_item {
+.spread-wrapper.reveal-active .left-paper {
+  animation: entry-spread 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.spread-wrapper.reveal-active .right-paper {
+  animation: entry-spread 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s both;
+}
+
+/* Left images */
+.spread-wrapper.reveal-active #left_logo         { animation: entry-el   1.4s ease 0.30s both; }
+.spread-wrapper.reveal-active #left_main_image   { animation: entry-fade 1.6s ease 0.40s both; }
+.spread-wrapper.reveal-active #left_detail_image { animation: entry-fade 1.6s ease 0.60s both; }
+.spread-wrapper.reveal-active #left_shoe_object  { animation: entry-el   1.4s ease 0.80s both; }
+
+/* Right images */
+.spread-wrapper.reveal-active #right_model_image    { animation: entry-el   1.4s ease 0.35s both; }
+.spread-wrapper.reveal-active #right_main_image     { animation: entry-fade 1.6s ease 0.45s both; }
+.spread-wrapper.reveal-active #right_stocking_image { animation: entry-el   1.6s ease 0.55s both; }
+.spread-wrapper.reveal-active #right_object         { animation: entry-el   1.4s ease 0.75s both; }
+.spread-wrapper.reveal-active #right_item           { animation: entry-fade 1.4s ease 0.65s both, float-item 5s ease-in-out 2.05s infinite; }
+.spread-wrapper.reveal-active #right_ribbon_image   { animation: entry-el   1.6s ease 1.00s both, drift-ribbon 7s ease-in-out 2.60s infinite; }
+
+/* Nav */
+.spread-wrapper.reveal-active #right_about,
+.spread-wrapper.reveal-active #right_collection,
+.spread-wrapper.reveal-active #right_archive      { animation: entry-fade 1.2s ease 0.50s both; }
+
+/* Right texts */
+.spread-wrapper.reveal-active #right_category_text1 { animation: entry-text 1.2s ease 0.80s both; }
+.spread-wrapper.reveal-active #right_desc1_text     { animation: entry-text 1.2s ease 0.70s both; }
+.spread-wrapper.reveal-active #right_desc2_text     { animation: entry-text 1.2s ease 0.80s both; }
+.spread-wrapper.reveal-active #right_desc3_text     { animation: entry-text 1.2s ease 0.90s both; }
+.spread-wrapper.reveal-active #right_story_text     { animation: entry-text 1.2s ease 0.90s both; }
+.spread-wrapper.reveal-active #right_bottom_menu    { animation: entry-text 1.2s ease 1.10s both; }
+.spread-wrapper.reveal-active #right_page_number    { animation: entry-text 1.2s ease 1.10s both; }
+
+/* Left texts */
+.spread-wrapper.reveal-active #left_desc_text     { animation: entry-text 1.6s ease 0.50s both; }
+.spread-wrapper.reveal-active #left_mood1_text    { animation: entry-text 1.4s ease 0.70s both; }
+.spread-wrapper.reveal-active #left_mood2_text    { animation: entry-text 1.4s ease 0.80s both; }
+.spread-wrapper.reveal-active #left_category_text { animation: entry-text 1.2s ease 0.90s both; }
+.spread-wrapper.reveal-active #left_bottom_text   { animation: entry-text 1.2s ease 1.00s both; }
+.spread-wrapper.reveal-active #left_page_number   { animation: entry-text 1.2s ease 1.10s both; }
+
+/* =============================================
+   POST-REVEAL — unlock hover, maintain float/drift
+   Added by JS after all entry animations finish
+============================================= */
+
+.spread-wrapper.reveal-done #left_main_image,
+.spread-wrapper.reveal-done #right_main_image,
+.spread-wrapper.reveal-done #left_detail_image,
+.spread-wrapper.reveal-done #right_about,
+.spread-wrapper.reveal-done #right_collection,
+.spread-wrapper.reveal-done #right_archive {
+  animation: none;
+}
+
+.spread-wrapper.reveal-done #right_item {
   animation: float-item 5s ease-in-out infinite;
 }
 
-/* =============================================
-   DRIFT — right_ribbon_image (fabric breathing)
-============================================= */
-
-#right_ribbon_image {
+.spread-wrapper.reveal-done #right_ribbon_image {
   animation: drift-ribbon 7s ease-in-out infinite;
 }
 
