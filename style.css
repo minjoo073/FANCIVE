@@ -251,9 +251,9 @@ img.el {
 
 #right_object {
   left: 86px;
-  top: 215px;
-  width: 338px;
-  height: 188px;
+  top: 214px;
+  width: 373px;
+  height: 373px;
   object-fit: contain;
 }
 
@@ -275,8 +275,8 @@ img.el {
 }
 
 #right_item {
-  left: 868px;
-  top: 49px;
+  left: 898px;
+  top: 95px;
   width: 192px;
   height: 132px;
   object-fit: cover;

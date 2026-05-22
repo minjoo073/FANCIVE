@@ -42,9 +42,9 @@ h : 299
 
 right_object
 x : 86
-y : 215
-w : 338
-h : 188
+y : 214
+w : 373
+h : 373
 
 right_stocking_image
 x : 76
@@ -53,8 +53,8 @@ w : 286
 h : 368
 
 right_item
-x : 868
-y : 49
+x : 898
+y : 95
 w : 192
 h : 132
 
