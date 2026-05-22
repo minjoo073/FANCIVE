@@ -45,7 +45,6 @@ x : 86
 y : 215
 w : 338
 h : 188
-r: -45`
 
 right_stocking_image
 x : 76
@@ -58,7 +57,7 @@ x : 868
 y : 49
 w : 192
 h : 132
-r : 30`
+
 
 right_main_image
 x : 758

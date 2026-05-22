@@ -181,7 +181,7 @@ img.el {
 #left_desc_text {
   left: 88px;
   top: 396px;
-  width: 265px;
+  width: 488px;
   font-size: 14px;
   line-height: 18px;
   font-weight: 200;
@@ -255,8 +255,6 @@ img.el {
   width: 338px;
   height: 188px;
   object-fit: contain;
-  transform: rotate(-45deg);
-  transform-origin: center center;
 }
 
 #right_stocking_image {
@@ -278,12 +276,10 @@ img.el {
 
 #right_item {
   left: 868px;
-  top: 130px;
+  top: 49px;
   width: 192px;
   height: 132px;
   object-fit: cover;
-  transform: rotate(30deg);
-  transform-origin: center center;
   z-index: 2;
 }
 
