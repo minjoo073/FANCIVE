@@ -97,11 +97,11 @@ color : 000000
 left_mood1_text
 
 content:
-IVORY / ASH / SMOKE
+IVORY  /  ASH  /  SMOKE
 
 x : 73
 y : 702
-w : 216
+w : 226
 g : 25 (가로)
 
 font-family: Switzer

@@ -283,8 +283,6 @@ img.el {
   width: 192px;
   height: 132px;
   object-fit: cover;
-  z-index: 2;
-  transform: rotate(30deg);
 }
 
 #right_ribbon_image {
@@ -394,12 +392,77 @@ img.el {
 }
 
 /* =============================================
+   INTRO LOADING SCREEN
+============================================= */
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: #1a1816;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 1.4s ease,
+              filter  1.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.intro-screen.is-hiding {
+  opacity: 0;
+  filter: blur(18px);
+}
+
+.intro-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  filter: blur(24px) brightness(0.72);
+  transform: scale(1.08);
+  transition: opacity 3.0s cubic-bezier(0.4,0,0.2,1),
+              filter  3.0s cubic-bezier(0.4,0,0.2,1),
+              transform 3.0s cubic-bezier(0.4,0,0.2,1);
+}
+
+.intro-hero.is-revealing {
+  opacity: 1;
+  filter: blur(0px) brightness(0.72);
+  transform: scale(1);
+}
+
+.intro-wordmark {
+  position: relative;
+  z-index: 1;
+  font-family: 'Switzer', sans-serif;
+  font-weight: 200;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 0.55em;
+  color: #e8e4dc;
+  text-indent: 0.55em;
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 2.0s ease,
+              filter  2.0s ease;
+  align-self: flex-end;
+  padding-bottom: 9vh;
+}
+
+.intro-wordmark.is-revealing {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* =============================================
    KEYFRAMES
 ============================================= */
 
 @keyframes float-item {
-  0%, 100% { transform: rotate(30deg) translateY(0px); }
-  50%       { transform: rotate(30deg) translateY(-3px); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-3px); }
 }
 
 @keyframes drift-ribbon {
@@ -469,7 +532,7 @@ img.el {
 .spread-wrapper.reveal-active #right_main_image     { animation: blur-to-focus         2.0s cubic-bezier(0.4,0,0.2,1) 0.40s both; }
 .spread-wrapper.reveal-active #right_stocking_image { animation: blur-to-focus         2.0s cubic-bezier(0.4,0,0.2,1) 0.55s both; }
 .spread-wrapper.reveal-active #right_object         { animation: blur-to-focus         2.0s cubic-bezier(0.4,0,0.2,1) 0.65s both; }
-.spread-wrapper.reveal-active #right_item           { animation: blur-to-focus-rotated 2.0s cubic-bezier(0.4,0,0.2,1) 0.60s both, float-item 5s ease-in-out 2.60s infinite; }
+.spread-wrapper.reveal-active #right_item           { animation: blur-to-focus 2.0s cubic-bezier(0.4,0,0.2,1) 0.60s both; }
 .spread-wrapper.reveal-active #right_ribbon_image   { animation: blur-to-focus         2.0s cubic-bezier(0.4,0,0.2,1) 0.85s both, drift-ribbon 7s ease-in-out 2.85s infinite; }
 
 /* Nav — after images settle */
@@ -508,9 +571,6 @@ img.el {
   animation: none;
 }
 
-.spread-wrapper.reveal-done #right_item {
-  animation: float-item 5s ease-in-out infinite;
-}
 
 .spread-wrapper.reveal-done #right_ribbon_image {
   animation: drift-ribbon 7s ease-in-out infinite;

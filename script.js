@@ -16,17 +16,36 @@
   window.addEventListener('resize', scaleSpread);
   scaleSpread();
 
-  var spread = document.querySelector('.spread-wrapper');
+  var spread    = document.querySelector('.spread-wrapper');
+  var introScreen  = document.getElementById('introScreen');
+  var introHero    = document.getElementById('introHeroImg');
+  var introWordmark = document.getElementById('introWordmark');
 
-  // brief dark pause → papers appear → images blur-to-focus with stagger
+  // t=100ms  — hero starts blur-to-focus (3.0s transition)
   setTimeout(function () {
-    spread.classList.add('reveal-active');
-  }, 200);
+    introHero.classList.add('is-revealing');
+  }, 100);
 
-  // images done: max delay 0.85s + duration 2.0s = 2.85s
-  // texts done:  max delay 2.5s  + duration 1.4s = 3.9s
-  // add reveal-done at 4.5s → unlock hover, float, drift
+  // t=1900ms — wordmark fades in (hero ~60% through blur clear)
+  setTimeout(function () {
+    introWordmark.classList.add('is-revealing');
+  }, 1900);
+
+  // t=4000ms — intro begins fading out; spread reveal starts simultaneously
+  setTimeout(function () {
+    introScreen.classList.add('is-hiding');
+    spread.classList.add('reveal-active');
+  }, 4000);
+
+  // t=5400ms — intro removed from DOM (after 1.4s fade)
+  setTimeout(function () {
+    if (introScreen && introScreen.parentNode) {
+      introScreen.parentNode.removeChild(introScreen);
+    }
+  }, 5400);
+
+  // spread animations complete: 4000ms offset + 4700ms = 8700ms
   setTimeout(function () {
     spread.classList.add('reveal-done');
-  }, 4700);
+  }, 8700);
 })();
