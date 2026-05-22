@@ -277,11 +277,11 @@ img.el {
 }
 
 #right_item {
-  left: 830px;
-  top: 80px;
+  left: 900px;
+  top: 140px;
   width: 192px;
   height: 132px;
-  object-fit: contain;
+  object-fit: cover;
   transform: rotate(30deg);
   transform-origin: center center;
   z-index: 2;
