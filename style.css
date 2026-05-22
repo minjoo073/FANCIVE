@@ -446,36 +446,64 @@ img.el {
   inset: 0;
   background: #1a1816;
   z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   pointer-events: none;
 }
 
-.intro-stocking {
+.intro-overlay img {
   position: absolute;
-  height: 88vh;
-  width: auto;
-  object-fit: contain;
   filter: brightness(0.82);
+  opacity: 0;
   transform-origin: center center;
   will-change: transform, opacity;
 }
 
+#introImg_main {
+  height: 56vh;
+  width: auto;
+  top: 4vh;
+  left: 3vw;
+  z-index: 2;
+}
+
+#introImg_stocking {
+  height: 66vh;
+  width: auto;
+  top: 5vh;
+  left: 34vw;
+  z-index: 4;
+}
+
+#introImg_detail {
+  height: 42vh;
+  width: auto;
+  top: 36vh;
+  right: 6vw;
+  z-index: 3;
+}
+
+#introImg_model {
+  height: 36vh;
+  width: auto;
+  top: 52vh;
+  left: 9vw;
+  z-index: 1;
+}
+
 .intro-brand {
   position: absolute;
-  bottom: 11%;
+  bottom: 9%;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Switzer', sans-serif;
-  font-size: clamp(18px, 2vw, 38px);
+  font-size: clamp(16px, 1.8vw, 34px);
   font-weight: 200;
   letter-spacing: 0.5em;
   color: #dedad2;
   opacity: 0;
   filter: blur(8px);
   white-space: nowrap;
+  z-index: 5;
 }
 
 /* =============================================
