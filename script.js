@@ -22,12 +22,17 @@
   var brand   = document.getElementById('introBrand');
   var spread  = document.querySelector('.spread-wrapper');
 
-  // intro image → actual spread element pairs
+  // all spread images — intro id → actual spread element id
   var pairs = [
-    { iId: 'introImg_main',     sId: 'left_main_image'      },
-    { iId: 'introImg_stocking', sId: 'right_stocking_image' },
-    { iId: 'introImg_detail',   sId: 'left_detail_image'    },
-    { iId: 'introImg_model',    sId: 'right_model_image'    }
+    { iId: 'iMain',      sId: 'left_main_image'      },
+    { iId: 'iStocking',  sId: 'right_stocking_image' },
+    { iId: 'iRightMain', sId: 'right_main_image'     },
+    { iId: 'iModel',     sId: 'right_model_image'    },
+    { iId: 'iDetail',    sId: 'left_detail_image'    },
+    { iId: 'iObject',    sId: 'right_object'         },
+    { iId: 'iShoe',      sId: 'left_shoe_object'     },
+    { iId: 'iItem',      sId: 'right_item'           },
+    { iId: 'iRibbon',    sId: 'right_ribbon_image'   }
   ];
 
   // t=0.3s — editorial images softly appear
@@ -39,8 +44,7 @@
     });
   }, 300);
 
-  // t=1.6s — images begin drifting toward their exact spread positions
-  // getBoundingClientRect() returns viewport coords of hidden spread elements
+  // t=1.6s — images begin drifting to exact spread positions
   setTimeout(function () {
     pairs.forEach(function (p) {
       var introEl  = document.getElementById(p.iId);
@@ -49,41 +53,44 @@
       var iR = introEl.getBoundingClientRect();
       var sR = spreadEl.getBoundingClientRect();
 
-      // translate center-to-center + scale to match spread element size
       var dx = (sR.left + sR.width  / 2) - (iR.left + iR.width  / 2);
       var dy = (sR.top  + sR.height / 2) - (iR.top  + iR.height / 2);
       var s  = sR.width / iR.width;
 
       introEl.style.transition =
         'transform 3.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      introEl.style.transform  =
+      introEl.style.transform =
         'translate(' + dx.toFixed(2) + 'px,' + dy.toFixed(2) + 'px) scale(' + s.toFixed(4) + ')';
     });
   }, 1600);
 
-  // t=2.4s — FANCIVE typography quietly appears during movement
+  // t=2.4s — FANCIVE typography quietly appears mid-movement
   setTimeout(function () {
     brand.style.transition = 'opacity 1.8s ease, filter 1.8s ease';
     brand.style.opacity    = '1';
     brand.style.filter     = 'blur(0px)';
   }, 2400);
 
-  // t=5.0s — images arrive at destinations (1.6 + 3.4 = 5.0s)
-  //          overlay dissolves + spread reveal begins simultaneously
+  // t=5.0s — images at destinations (1.6 + 3.4 = 5.0s)
+  //   1. spread reveals (papers instantly, elements stagger)
+  //   2. clip-path wipe sweeps overlay left → right (1.1s)
   setTimeout(function () {
-    overlay.style.transition    = 'opacity 2.0s ease';
-    overlay.style.opacity       = '0';
-    overlay.style.pointerEvents = 'none';
     spread.classList.add('reveal-active');
+
+    // slight delay so spread papers are rendered before wipe starts
+    setTimeout(function () {
+      overlay.classList.add('wipe-exit');
+      overlay.style.pointerEvents = 'none';
+    }, 80);
   }, 5000);
 
-  // t=7.2s — overlay removed from DOM
+  // t=6.3s — wipe done, remove overlay from DOM
   setTimeout(function () {
     overlay.style.display = 'none';
-  }, 7200);
+  }, 6400);
 
-  // t=8.0s — all entry animations done, unlock hover interactions
+  // t=7.2s — all entry animations done, unlock hover
   setTimeout(function () {
     spread.classList.add('reveal-done');
-  }, 8000);
+  }, 7200);
 })();
