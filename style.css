@@ -43,48 +43,61 @@ img {
 }
 
 /* =============================================
-   BASE
+   BASE — full viewport, dark charcoal bg
 ============================================= */
-html {
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-}
-
+html,
 body {
-  width: 1920px;
-  height: 1080px;
-  background: #eceae5;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   font-family: 'Switzer', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #1a1816;
+}
+
+/* =============================================
+   SCALE CONTAINER
+   fixed, full viewport
+============================================= */
+.scale-container {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
 }
 
 /* =============================================
    SPREAD WRAPPER
-   LEFT 783 + RIGHT 1134 = 1917px
+   1917 x 967 — JS가 translate + scale 적용
+   transform-origin: top left 기준
 ============================================= */
 .spread-wrapper {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 1917px;
   height: 967px;
   display: flex;
   flex-direction: row;
+  flex-shrink: 0;
+  transform-origin: top left;
 }
 
 /* =============================================
    PAPER FRAMES
+   Paper PNG carries texture, tone, shadow — no CSS effects added
 ============================================= */
 .left-paper {
   position: relative;
   width: 783px;
   height: 966px;
-  background: #ffffff;
   flex-shrink: 0;
+  background-image: url('assets/images/LEFT_PAPER.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   overflow: visible;
 }
 
@@ -92,8 +105,10 @@ body {
   position: relative;
   width: 1134px;
   height: 967px;
-  background: #f9f7f4;
   flex-shrink: 0;
+  background-image: url('assets/images/RIGHT_PAPER.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   overflow: visible;
 }
 
@@ -358,7 +373,7 @@ img.el {
   width: 116px;
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: 3px;
   font-size: 20px;
   line-height: 26px;
   font-weight: 300;
