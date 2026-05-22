@@ -1,0 +1,377 @@
+/* =============================================
+   RESET
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+/* =============================================
+   FONT FACE — Switzer
+============================================= */
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   BASE
+============================================= */
+html {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+  background: #eceae5;
+  font-family: 'Switzer', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* =============================================
+   SPREAD WRAPPER
+   LEFT 783 + RIGHT 1134 = 1917px
+============================================= */
+.spread-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1917px;
+  height: 967px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* =============================================
+   PAPER FRAMES
+============================================= */
+.left-paper {
+  position: relative;
+  width: 783px;
+  height: 966px;
+  background: #ffffff;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.right-paper {
+  position: relative;
+  width: 1134px;
+  height: 967px;
+  background: #f9f7f4;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* =============================================
+   CONTENT LAYER
+============================================= */
+.content-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* =============================================
+   ELEMENT BASE
+============================================= */
+.el {
+  position: absolute;
+}
+
+img.el {
+  object-fit: cover;
+}
+
+.text {
+  font-family: 'Switzer', sans-serif;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+/* =============================================
+   LEFT PAPER — IMAGES
+============================================= */
+
+#left_logo {
+  left: 67px;
+  top: 16px;
+  width: 203px;
+  height: 40px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+#left_main_image {
+  left: 363px;
+  top: 0;
+  width: 360px;
+  height: 391px;
+  object-fit: cover;
+}
+
+#left_detail_image {
+  left: 406px;
+  top: 440px;
+  width: 245px;
+  height: 312px;
+  object-fit: cover;
+}
+
+#left_shoe_object {
+  left: 100px;
+  top: 767px;
+  width: 209px;
+  height: 223px;
+  object-fit: contain;
+}
+
+/* =============================================
+   LEFT PAPER — TEXT
+============================================= */
+
+#left_desc_text {
+  left: 88px;
+  top: 396px;
+  width: 265px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+}
+
+#left_mood1_text {
+  left: 73px;
+  top: 702px;
+  width: 216px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+}
+
+#left_mood2_text {
+  left: 328px;
+  top: 682px;
+  width: 70px;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 300;
+}
+
+#left_category_text {
+  left: 406px;
+  top: 759px;
+  width: 245px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#left_bottom_text {
+  left: 406px;
+  top: 870px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 300;
+}
+
+#left_page_number {
+  left: 363px;
+  top: 940px;
+  width: 339px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* =============================================
+   RIGHT PAPER — IMAGES
+============================================= */
+
+#right_model_image {
+  left: 369px;
+  top: 36px;
+  width: 194px;
+  height: 299px;
+  object-fit: cover;
+}
+
+#right_object {
+  left: 86px;
+  top: 215px;
+  width: 338px;
+  height: 188px;
+  object-fit: contain;
+  transform: rotate(-45deg);
+  transform-origin: center center;
+}
+
+#right_stocking_image {
+  left: 76px;
+  top: 572px;
+  width: 286px;
+  height: 368px;
+  object-fit: cover;
+}
+
+#right_item {
+  left: 868px;
+  top: 49px;
+  width: 192px;
+  height: 132px;
+  object-fit: contain;
+  transform: rotate(30deg);
+  transform-origin: center center;
+}
+
+#right_main_image {
+  left: 758px;
+  top: 198px;
+  width: 276px;
+  height: 504px;
+  object-fit: cover;
+}
+
+#right_ribbon_image {
+  left: 709px;
+  top: 752px;
+  width: 360px;
+  height: 214px;
+  object-fit: contain;
+}
+
+/* =============================================
+   RIGHT PAPER — TEXT
+============================================= */
+
+#right_about {
+  left: 221px;
+  top: 49px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+#right_collection {
+  left: 643px;
+  top: 49px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+#right_archive {
+  left: 925px;
+  top: 49px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+#right_category_text1 {
+  left: 369px;
+  top: 339px;
+  width: 194px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#right_desc1_text {
+  left: 419px;
+  top: 430px;
+  width: 93px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 200;
+}
+
+#right_desc2_text {
+  left: 624px;
+  top: 508px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+#right_desc3_text {
+  left: 484px;
+  top: 588px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+}
+
+#right_story_text {
+  left: 652px;
+  top: 706px;
+  width: 86px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+}
+
+#right_bottom_menu {
+  left: 384px;
+  top: 878px;
+  width: 116px;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 300;
+}
+
+#right_page_number {
+  left: 39px;
+  top: 941px;
+  width: 569px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}

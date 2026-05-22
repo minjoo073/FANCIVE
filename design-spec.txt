@@ -1,0 +1,376 @@
+이미지
+
+
+[left_fram]
+
+LEFT_PAPER : 783*966
+
+left_logo
+x : 67
+y : 16
+w : 203
+h : 40
+
+left_main_image
+x : 363
+y : 0
+w : 360
+h : 391
+
+left-detail-image
+x : 406
+y : 440
+w : 245
+h : 312
+
+left-shoe-object
+x : 100
+y : 767
+w : 209
+h : 223
+
+
+[right_fram]
+
+RIGHT_PAPER:1134*967
+
+right-model-image
+x : 369
+y : 36
+w : 194
+h : 299
+
+right_object
+x : 86
+y : 215
+w : 338
+h : 188
+r: -45`
+
+right_stocking_image
+x : 76
+y : 572
+w : 286
+h : 368
+
+right_item
+x : 868
+y : 49
+w : 192
+h : 132
+r : 30`
+
+right_main_image
+x : 758
+y : 198
+w : 276
+h : 504
+
+right_ribbon_image
+x : 709
+y : 752
+w : 360
+h : 214
+
+
+텍스트
+
+
+left_desc_text
+
+content:
+THE MATERIAL LANGUAGE OF FANCIVE IS BUILT THROUGH
+SOFT CONTRASTS, TRANSLUCENT TEXTURES, QUIET LIGHT, AND A SENSE OF
+DELICATE EMOTIONAL TENSION.
+
+x : 88
+y : 396
+w : 488
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Extralight
+color : 000000
+
+-
+left_mood1_text
+
+content:
+IVORY / ASH / SMOKE
+
+x : 73
+y : 702
+w : 216
+g : 25 (가로)
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Extralight
+color : 000000
+
+
+-
+left_mood2_text
+
+content:
+SHEER
+LACE
+ARCHIVE
+
+x : 328
+y : 682
+w : 70
+g : 3 (세로)
+
+font-family: Switzer
+font-size :  16
+line-height : 18
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+left_category_text
+
+content:
+PG.           08
+
+x : 406
+y : 759
+w : 245
+g : 121 (가로)
+
+font-family: Switzer
+font-size :  12
+line-height : 16
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+left_bottom_text
+
+content:
+TEXTILE STUDY
+
+x : 406
+y : 870
+w : 86
+
+font-family: Switzer
+font-size :  12
+line-height : 16
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+left_page_number
+
+content:
+P.                                   67
+
+x : 363
+y : 940
+w : 339
+g : 311 (가로)
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Regular
+color : 000000
+
+
+-
+right_about
+
+content:
+ABOUT
+
+x : 221
+y : 49
+w : 68
+
+font-family: Switzer
+font-size :  20
+line-height : 26
+letter-spacing : 0%
+font-weight :Regular
+color : 000000
+
+
+-
+right_collection
+
+content:
+COLLECTION
+
+x : 643
+y : 49
+w : 122
+
+font-family: Switzer
+font-size :  20
+line-height : 26
+letter-spacing : 0%
+font-weight :Regular
+color : 000000
+
+
+-
+right_archive
+
+content:
+ARCHIVE
+
+x : 925
+y : 49
+w : 84
+
+font-family: Switzer
+font-size :  20
+line-height : 26
+letter-spacing : 0%
+font-weight :Regular
+color : 000000
+
+
+-
+right_category_text1
+
+content:
+PG.       01
+
+x : 369
+y : 339
+w : 194
+
+font-family: Switzer
+font-size :  12
+line-height : 16
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+right_desc1_text
+
+content:
+MATERIAL
+STUDY
+
+x : 419
+y : 430
+w : 93
+
+font-family: Switzer
+font-size :  20
+line-height : 26
+letter-spacing : 0%
+font-weight : Extralight
+color : 000000
+
+
+-
+right_desc2_text
+
+content:
+EDITORIAL
+
+x : 624
+y : 508
+w : 89
+
+font-family: Switzer
+font-size :  18
+line-height : 24
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+right_desc3_text
+
+content:
+OBJECTS
+
+x : 484
+y : 588
+w : 61
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+right_story_text
+
+content:
+THE VISUAL DIRECTION OF FANCIVE FOCUSES ON QUIET
+DETAILS, RESTRAINED FEMININITY, AND EMOTIONAL SPACE.
+
+x : 652
+y : 706
+w : 86
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Extralight
+color : 000000
+
+
+-
+right_bottom_menu
+
+content:
+CAMPAIGN
+STORIES
+CONTACT
+
+x : 384
+y : 8781
+w : 116
+g : 29 (세로)
+
+font-family: Switzer
+font-size :  20
+line-height : 26
+letter-spacing : 0%
+font-weight : Light
+color : 000000
+
+
+-
+right_page_number
+
+content:
+66      P.
+
+x : 39
+y : 941
+w : 569
+g : 540 (가로)
+
+font-family: Switzer
+font-size :  14
+line-height : 18
+letter-spacing : 0%
+font-weight : Regular
+color : 000000
