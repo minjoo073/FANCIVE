@@ -325,7 +325,7 @@ DETAILS, RESTRAINED FEMININITY, AND EMOTIONAL SPACE.
 
 x : 652
 y : 706
-w : 86
+w : 378
 
 font-family: Switzer
 font-size :  14
