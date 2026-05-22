@@ -191,6 +191,9 @@ img.el {
   left: 73px;
   top: 702px;
   width: 226px;
+  display: flex;
+  align-items: baseline;
+  gap: 25px;
   font-size: 14px;
   line-height: 18px;
   font-weight: 200;
