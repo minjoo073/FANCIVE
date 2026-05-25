@@ -587,7 +587,7 @@ img.el {
 
 #left_main_image:hover,
 #right_main_image:hover {
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 /* =============================================
@@ -599,7 +599,55 @@ img.el {
 }
 
 #left_detail_image:hover {
-  filter: contrast(1.08) brightness(1.03);
+  filter: contrast(1.12) brightness(1.06);
+}
+
+/* =============================================
+   HOVER — remaining spread images
+============================================= */
+
+#left_shoe_object {
+  transition: transform 1.2s ease, filter 1.2s ease;
+}
+#left_shoe_object:hover {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+
+#right_model_image {
+  transition: transform 1.4s ease;
+}
+#right_model_image:hover {
+  transform: scale(1.04);
+}
+
+#right_stocking_image {
+  transition: transform 1.4s ease;
+}
+#right_stocking_image:hover {
+  transform: scale(1.04);
+}
+
+#right_object {
+  transition: filter 1.2s ease;
+}
+#right_object:hover {
+  filter: brightness(1.10) contrast(1.07);
+}
+
+#right_item {
+  transition: transform 1.2s ease, filter 1.2s ease;
+}
+#right_item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+
+#right_ribbon_image {
+  transition: filter 1.2s ease;
+}
+#right_ribbon_image:hover {
+  filter: brightness(1.08) contrast(1.06);
 }
 
 /* =============================================
@@ -611,6 +659,10 @@ img.el {
 #right_archive {
   cursor: default;
   transition: opacity 0.9s ease, letter-spacing 0.9s ease;
+}
+
+#right_collection {
+  cursor: pointer;
 }
 
 #right_about:hover,

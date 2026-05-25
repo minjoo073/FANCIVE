@@ -16,36 +16,65 @@
   window.addEventListener('resize', scaleSpread);
   scaleSpread();
 
-  var spread    = document.querySelector('.spread-wrapper');
+  var spread       = document.querySelector('.spread-wrapper');
   var introScreen  = document.getElementById('introScreen');
   var introHero    = document.getElementById('introHeroImg');
   var introWordmark = document.getElementById('introWordmark');
 
-  // t=100ms  — hero starts blur-to-focus (3.0s transition)
-  setTimeout(function () {
-    introHero.classList.add('is-revealing');
-  }, 100);
-
-  // t=1900ms — wordmark fades in (hero ~60% through blur clear)
-  setTimeout(function () {
-    introWordmark.classList.add('is-revealing');
-  }, 1900);
-
-  // t=4000ms — intro begins fading out; spread reveal starts simultaneously
-  setTimeout(function () {
-    introScreen.classList.add('is-hiding');
-    spread.classList.add('reveal-active');
-  }, 4000);
-
-  // t=5400ms — intro removed from DOM (after 1.4s fade)
-  setTimeout(function () {
+  // ── Skip intro if already seen this session ───────────
+  if (sessionStorage.getItem('introSeen')) {
+    // Remove intro immediately, show spread without delay
     if (introScreen && introScreen.parentNode) {
       introScreen.parentNode.removeChild(introScreen);
     }
-  }, 5400);
-
-  // spread animations complete: 4000ms offset + 4700ms = 8700ms
-  setTimeout(function () {
+    spread.classList.add('reveal-active');
     spread.classList.add('reveal-done');
-  }, 8700);
+  } else {
+    // First visit — run full intro sequence
+    sessionStorage.setItem('introSeen', '1');
+
+    // t=100ms  — hero starts blur-to-focus (3.0s transition)
+    setTimeout(function () {
+      introHero.classList.add('is-revealing');
+    }, 100);
+
+    // t=1900ms — wordmark fades in (hero ~60% through blur clear)
+    setTimeout(function () {
+      introWordmark.classList.add('is-revealing');
+    }, 1900);
+
+    // t=4000ms — intro begins fading out; spread reveal starts simultaneously
+    setTimeout(function () {
+      introScreen.classList.add('is-hiding');
+      spread.classList.add('reveal-active');
+    }, 4000);
+
+    // t=5400ms — intro removed from DOM (after 1.4s fade)
+    setTimeout(function () {
+      if (introScreen && introScreen.parentNode) {
+        introScreen.parentNode.removeChild(introScreen);
+      }
+    }, 5400);
+
+    // spread animations complete: 4000ms offset + 4700ms = 8700ms
+    setTimeout(function () {
+      spread.classList.add('reveal-done');
+    }, 8700);
+  }
+
+  // Navigate to collection page
+  var collectionBtn = document.getElementById('right_collection');
+  if (collectionBtn) {
+    collectionBtn.addEventListener('click', function () {
+      var overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.45s ease';
+      document.body.appendChild(overlay);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          overlay.style.opacity = '1';
+        });
+      });
+      setTimeout(function () { window.location.href = 'collection.html'; }, 460);
+    });
+  }
 })();
