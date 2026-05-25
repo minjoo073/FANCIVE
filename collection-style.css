@@ -1,0 +1,367 @@
+/* =============================================
+   RESET
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+/* =============================================
+   FONT FACE — Switzer
+============================================= */
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Medium.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   BASE
+============================================= */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  font-family: 'Switzer', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.is-visible {
+  opacity: 1;
+}
+
+/* =============================================
+   SCALE CONTAINER
+============================================= */
+.c-scale-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* =============================================
+   COLLECTION WRAPPER — 1920 × 1080
+============================================= */
+.c-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  background: #ffffff;
+}
+
+/* =============================================
+   ELEMENT BASE
+============================================= */
+.c-el {
+  position: absolute;
+}
+
+.c-text {
+  font-family: 'Switzer', sans-serif;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+/* =============================================
+   IMAGES — z-index layering (back → front)
+============================================= */
+
+#c_hero_main {
+  left: 1330px;
+  top: 70px;
+  width: 508px;
+  height: 1010px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+
+#c_look01 {
+  left: 173px;
+  top: 47px;
+  width: 231px;
+  height: 463px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 2;
+}
+
+#c_look02 {
+  left: 60px;
+  top: 280px;
+  width: 270px;
+  height: 540px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 3;
+}
+
+#c_look03 {
+  left: 242px;
+  top: 421px;
+  width: 254px;
+  height: 508px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 4;
+}
+
+#c_look04 {
+  left: 365px;
+  top: 255px;
+  width: 397px;
+  height: 761px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 5;
+}
+
+#c_look05 {
+  left: 675px;
+  top: 510px;
+  width: 250px;
+  height: 501px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 6;
+}
+
+#c_look06 {
+  left: 975px;
+  top: 440px;
+  width: 245px;
+  height: 510px;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 7;
+}
+
+/* =============================================
+   CENTER LINE — x:960, full height, #999 20%
+============================================= */
+#c_center_line {
+  left: 960px;
+  top: 0;
+  width: 1px;
+  height: 1080px;
+  background: rgba(153, 153, 153, 0.20);
+  box-shadow: 0 4px 4px rgba(153, 153, 153, 0.25);
+  z-index: 8;
+}
+
+/* =============================================
+   INDEX LABELS
+============================================= */
+.c-idx {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #000000;
+  z-index: 15;
+}
+
+#c_idx01 { left: 352px; top: 103px; width: 26px; }
+#c_idx02 { left: 103px; top: 474px; width: 26px; }
+#c_idx03 { left: 306px; top: 856px; width: 26px; }
+#c_idx04 { left: 470px; top: 346px; width: 26px; }
+#c_idx05 { left: 870px; top: 565px; width: 26px; }
+#c_idx06 { left: 1221px; top: 721px; width: 26px; }
+
+/* =============================================
+   HEADER — brand logo, title, year, menu
+============================================= */
+#c_brand_logo {
+  left: 81px;
+  top: 17px;
+  width: 86px;
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: 300;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.6s ease;
+}
+
+#c_brand_logo:hover {
+  opacity: 0.45;
+}
+
+#c_page_title {
+  left: 765px;
+  top: 15px;
+  width: 147px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  z-index: 20;
+}
+
+#c_page_year {
+  left: 1035px;
+  top: 16px;
+  width: 51px;
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: 400;
+  z-index: 20;
+}
+
+#c_menu_group {
+  left: 1737px;
+  top: 14px;
+  width: 63px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+  color: #555555;
+  z-index: 20;
+}
+
+/* =============================================
+   BODY TEXT
+============================================= */
+#c_brand_desc {
+  left: 412px;
+  top: 125px;
+  width: 526px;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 300;
+  z-index: 10;
+}
+
+#c_mood_note {
+  left: 412px;
+  top: 166px;
+  width: 371px;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 300;
+  z-index: 10;
+}
+
+#c_side_note {
+  left: 1018px;
+  top: 172px;
+  width: 90px;
+  font-size: 14px;
+  line-height: 130%;
+  font-weight: 200;
+  color: #000000;
+  z-index: 10;
+}
+
+/* =============================================
+   LOOK IMAGES — hover & click
+============================================= */
+#c_look01, #c_look02, #c_look03,
+#c_look04, #c_look05, #c_look06 {
+  cursor: pointer;
+  transition: transform 0.55s cubic-bezier(0.25, 0, 0.1, 1),
+              filter   0.55s ease;
+}
+
+#c_look01:hover { transform: scale(1.045); filter: brightness(1.07); z-index: 20; }
+#c_look02:hover { transform: scale(1.045); filter: brightness(1.07); z-index: 20; }
+#c_look03:hover { transform: scale(1.045); filter: brightness(1.07); z-index: 20; }
+#c_look04:hover { transform: scale(1.035); filter: brightness(1.06); z-index: 20; }
+#c_look05:hover { transform: scale(1.045); filter: brightness(1.07); z-index: 20; }
+#c_look06:hover { transform: scale(1.045); filter: brightness(1.07); z-index: 20; }
+
+#c_hero_main {
+  transition: transform 0.55s cubic-bezier(0.25, 0, 0.1, 1),
+              filter   0.55s ease;
+}
+#c_hero_main:hover { transform: scale(1.03); filter: brightness(1.06); }
+
+/* =============================================
+   PAGE ENTRY ANIMATION — fast (subpage)
+============================================= */
+@keyframes c-entry-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0px); }
+}
+
+@keyframes c-entry-fade-still {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.c-wrapper.is-ready #c_hero_main  { animation: c-entry-fade-still 0.5s ease 0.05s both; }
+.c-wrapper.is-ready #c_look01     { animation: c-entry-fade-still 0.5s ease 0.05s both; }
+.c-wrapper.is-ready #c_look02     { animation: c-entry-fade-still 0.5s ease 0.08s both; }
+.c-wrapper.is-ready #c_look03     { animation: c-entry-fade-still 0.5s ease 0.11s both; }
+.c-wrapper.is-ready #c_look04     { animation: c-entry-fade-still 0.5s ease 0.14s both; }
+.c-wrapper.is-ready #c_look05     { animation: c-entry-fade-still 0.5s ease 0.17s both; }
+.c-wrapper.is-ready #c_look06     { animation: c-entry-fade-still 0.5s ease 0.20s both; }
+.c-wrapper.is-ready #c_brand_logo,
+.c-wrapper.is-ready #c_page_title,
+.c-wrapper.is-ready #c_page_year,
+.c-wrapper.is-ready #c_menu_group { animation: c-entry-fade-still 0.4s ease 0.10s both; }
+.c-wrapper.is-ready #c_brand_desc,
+.c-wrapper.is-ready #c_mood_note,
+.c-wrapper.is-ready #c_side_note  { animation: c-entry-fade-still 0.4s ease 0.18s both; }
+.c-wrapper.is-ready .c-idx        { animation: c-entry-fade-still 0.4s ease 0.22s both; }
+
+.c-wrapper.is-ready #c_center_line { animation: c-entry-fade-still 0.5s ease 0.03s both; }
+
+/* initial hidden state */
+#c_center_line,
+#c_hero_main, #c_look01, #c_look02, #c_look03, #c_look04, #c_look05, #c_look06,
+#c_brand_logo, #c_page_title, #c_page_year, #c_menu_group,
+#c_brand_desc, #c_mood_note, #c_side_note, .c-idx {
+  opacity: 0;
+}
