@@ -1,0 +1,438 @@
+/* =============================================
+   RESET
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+/* =============================================
+   FONT FACE — Switzer
+============================================= */
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Medium.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   BASE
+============================================= */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1816;
+  font-family: 'Switzer', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.is-visible {
+  opacity: 1;
+}
+
+/* =============================================
+   SCALE CONTAINER
+============================================= */
+.ar-scale-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #1a1816;
+}
+
+/* =============================================
+   ARCHIVE WRAPPER — 1920 × 1080
+============================================= */
+.ar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  background: #F1F0F0;
+}
+
+/* =============================================
+   ELEMENT BASE
+============================================= */
+.ar-el {
+  position: absolute;
+}
+
+.ar-text {
+  font-family: 'Switzer', sans-serif;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+/* center line removed */
+
+/* =============================================
+   LEFT — YEAR DIGITS (scattered)
+============================================= */
+.ar-digit {
+  line-height: 1;
+  font-weight: 400;
+  color: #000000;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+#ar_digit_2a {
+  left: 130px;
+  top: 140px;
+  font-size: 230px;
+  opacity: 0.065;
+}
+
+#ar_digit_0 {
+  left: 610px;
+  top: 300px;
+  font-size: 240px;
+  opacity: 0.065;
+}
+
+#ar_digit_2b {
+  left: 720px;
+  top: 430px;
+  font-size: 210px;
+  opacity: 0.065;
+}
+
+#ar_digit_6 {
+  left: 160px;
+  top: 680px;
+  font-size: 220px;
+  opacity: 0.065;
+}
+
+/* =============================================
+   LEFT — OBJECT SCATTER
+============================================= */
+.ar-obj {
+  object-fit: cover;
+  object-position: center;
+}
+
+#ar_obj1 {
+  left: 220px;
+  top: 190px;
+  width: 480px;
+  height: 550px;
+  z-index: 2;
+}
+
+#ar_obj2 {
+  left: 530px;
+  top: 620px;
+  width: 340px;
+  height: 400px;
+  z-index: 3;
+}
+
+/* =============================================
+   LEFT LABELS
+============================================= */
+.ar-section-label {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  color: #aaaaaa;
+  letter-spacing: 0.15em;
+  z-index: 10;
+}
+
+#ar_seasons_label {
+  left: 180px;
+  top: 125px;
+}
+
+/* =============================================
+   HEADER
+============================================= */
+#ar_brand_logo {
+  left: 81px;
+  top: 17px;
+  width: 90px;
+  height: 28px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.6s ease;
+}
+
+#ar_brand_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+#ar_brand_logo:hover {
+  opacity: 0.45;
+}
+
+#ar_page_title {
+  left: 765px;
+  top: 15px;
+  width: 130px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  z-index: 20;
+}
+
+#ar_page_year {
+  left: 1035px;
+  top: 16px;
+  width: 51px;
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: 200;
+  z-index: 20;
+}
+
+#ar_menu_group {
+  left: 1737px;
+  top: 14px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+  color: #555555;
+  z-index: 20;
+}
+
+#ar_menu_group span {
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+#ar_menu_group span:hover {
+  opacity: 0.45;
+}
+
+/* =============================================
+   RIGHT PANEL — INDEX LABEL
+============================================= */
+#ar_index_label {
+  left: 1160px;
+  top: 125px;
+  z-index: 10;
+}
+
+/* =============================================
+   RIGHT PANEL — COLOPHON
+============================================= */
+#ar_colophon_rule {
+  left: 1160px;
+  top: 1020px;
+  width: 600px;
+  height: 1px;
+  background: rgba(153, 153, 153, 0.25);
+  z-index: 10;
+}
+
+#ar_colophon {
+  left: 1160px;
+  top: 1034px;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  color: #aaaaaa;
+  z-index: 10;
+}
+
+/* =============================================
+   RIGHT PANEL — SEASON LIST
+============================================= */
+#ar_season_list {
+  left: 1160px;
+  top: 155px;
+  width: 600px;
+  z-index: 10;
+}
+
+.ar-rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(153, 153, 153, 0.25);
+}
+
+.ar-season {
+  display: flex;
+  align-items: center;
+  height: 96px;
+  padding: 0 4px;
+}
+
+.ar-season-no {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  letter-spacing: 0.08em;
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.ar-season-name {
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: 300;
+  width: 200px;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ar-season-status {
+  font-size: 13px;
+  line-height: 17px;
+  font-weight: 200;
+  letter-spacing: 0.06em;
+  flex: 1;
+}
+
+.ar-season-arrow {
+  font-size: 18px;
+  font-weight: 200;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-6px);
+}
+
+/* Active season */
+.ar-season--active {
+  cursor: pointer;
+}
+
+.ar-season--active .ar-season-no,
+.ar-season--active .ar-season-name,
+.ar-season--active .ar-season-status {
+  color: #000000;
+}
+
+.ar-season--active:hover .ar-season-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ar-season--active:hover .ar-season-name {
+  opacity: 0.5;
+}
+
+/* Dim season (forthcoming) */
+.ar-season--dim .ar-season-no,
+.ar-season--dim .ar-season-name,
+.ar-season--dim .ar-season-status {
+  color: #bbbbbb;
+}
+
+.ar-season--dim {
+  cursor: default;
+}
+
+/* Muted season */
+.ar-season--muted .ar-season-no,
+.ar-season--muted .ar-season-name,
+.ar-season--muted .ar-season-status {
+  color: #cccccc;
+}
+
+.ar-season--muted {
+  cursor: default;
+}
+
+/* =============================================
+   PAGE ENTRY ANIMATION
+============================================= */
+@keyframes ar-entry-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ar-digit-fade {
+  from { opacity: 0; }
+  to   { opacity: 0.065; }
+}
+
+.ar-wrapper.is-ready #ar_digit_2a,
+.ar-wrapper.is-ready #ar_digit_0,
+.ar-wrapper.is-ready #ar_digit_2b,
+.ar-wrapper.is-ready #ar_digit_6       { animation: ar-digit-fade 0.8s ease 0.02s both; }
+
+.ar-wrapper.is-ready #ar_obj1           { animation: ar-entry-fade 0.5s ease 0.06s both; }
+.ar-wrapper.is-ready #ar_obj2           { animation: ar-entry-fade 0.5s ease 0.12s both; }
+
+.ar-wrapper.is-ready #ar_seasons_label  { animation: ar-entry-fade 0.4s ease 0.15s both; }
+
+.ar-wrapper.is-ready #ar_brand_logo,
+.ar-wrapper.is-ready #ar_page_title,
+.ar-wrapper.is-ready #ar_page_year,
+.ar-wrapper.is-ready #ar_menu_group     { animation: ar-entry-fade 0.4s ease 0.08s both; }
+
+.ar-wrapper.is-ready #ar_index_label,
+.ar-wrapper.is-ready #ar_season_list    { animation: ar-entry-fade 0.5s ease 0.14s both; }
+
+.ar-wrapper.is-ready #ar_colophon_rule,
+.ar-wrapper.is-ready #ar_colophon       { animation: ar-entry-fade 0.5s ease 0.22s both; }
+
+/* initial hidden state */
+#ar_digit_2a, #ar_digit_0, #ar_digit_2b, #ar_digit_6,
+#ar_obj1, #ar_obj2,
+#ar_seasons_label,
+#ar_brand_logo, #ar_page_title, #ar_page_year, #ar_menu_group,
+#ar_index_label, #ar_season_list,
+#ar_colophon_rule, #ar_colophon {
+  opacity: 0;
+}

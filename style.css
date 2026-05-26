@@ -374,9 +374,10 @@ img.el {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 200;
+  color: #888888;
 }
 
 #right_page_number {
@@ -394,6 +395,10 @@ img.el {
 /* =============================================
    INTRO LOADING SCREEN
 ============================================= */
+
+html.skip-intro .intro-screen {
+  display: none;
+}
 
 .intro-screen {
   position: fixed;

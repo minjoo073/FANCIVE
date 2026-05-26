@@ -62,19 +62,33 @@
     }, 8700);
   }
 
+  function overlayNavigate(url) {
+    var overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.45s ease';
+    document.body.appendChild(overlay);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.style.opacity = '1';
+      });
+    });
+    setTimeout(function () { window.location.href = url; }, 460);
+  }
+
   // Navigate to collection page
   var collectionBtn = document.getElementById('right_collection');
   if (collectionBtn) {
-    collectionBtn.addEventListener('click', function () {
-      var overlay = document.createElement('div');
-      overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.45s ease';
-      document.body.appendChild(overlay);
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          overlay.style.opacity = '1';
-        });
-      });
-      setTimeout(function () { window.location.href = 'collection.html'; }, 460);
-    });
+    collectionBtn.addEventListener('click', function () { overlayNavigate('collection.html'); });
+  }
+
+  // Navigate to about page
+  var aboutBtn = document.getElementById('right_about');
+  if (aboutBtn) {
+    aboutBtn.addEventListener('click', function () { overlayNavigate('about.html'); });
+  }
+
+  // Navigate to archive page
+  var archiveBtn = document.getElementById('right_archive');
+  if (archiveBtn) {
+    archiveBtn.addEventListener('click', function () { overlayNavigate('archive.html'); });
   }
 })();

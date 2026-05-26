@@ -1,0 +1,393 @@
+/* =============================================
+   RESET
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+/* =============================================
+   FONT FACE — Switzer
+============================================= */
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('assets/fonts/Switzer-Medium.woff2') format('woff2'),
+       url('assets/fonts/Switzer-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   BASE
+============================================= */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1816;
+  font-family: 'Switzer', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.is-visible {
+  opacity: 1;
+}
+
+/* =============================================
+   SCALE CONTAINER
+============================================= */
+.ab-scale-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #1a1816;
+}
+
+/* =============================================
+   ABOUT WRAPPER — 1920 × 1080
+============================================= */
+.ab-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  background: #F1F0F0;
+}
+
+/* =============================================
+   ELEMENT BASE
+============================================= */
+.ab-el {
+  position: absolute;
+}
+
+.ab-text {
+  font-family: 'Switzer', sans-serif;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+/* =============================================
+   CENTER LINE
+============================================= */
+#ab_center_line {
+  left: 960px;
+  top: 0;
+  width: 1px;
+  height: 1080px;
+  background: rgba(153, 153, 153, 0.20);
+  box-shadow: 0 4px 4px rgba(153, 153, 153, 0.25);
+  z-index: 8;
+}
+
+/* =============================================
+   LEFT SECTION LABEL
+============================================= */
+#ab_left_label {
+  left: 820px;
+  top: 125px;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  color: #aaaaaa;
+  letter-spacing: 0.15em;
+  z-index: 10;
+}
+
+/* =============================================
+   LEFT — OBJECT SCATTER
+   3 objects, different sizes, overlapping
+============================================= */
+.ab-obj {
+  object-fit: cover;
+  object-position: center;
+}
+
+#ab_obj1 {
+  left: 30px;
+  top: 0;
+  width: 340px;
+  height: 740px;
+  z-index: 4;
+}
+
+#ab_obj2 {
+  left: 350px;
+  top: 200px;
+  width: 470px;
+  height: 580px;
+  z-index: 2;
+}
+
+#ab_obj3 {
+  left: 80px;
+  top: 700px;
+  width: 340px;
+  height: 330px;
+  z-index: 3;
+}
+
+/* RIGHT — RULE 3 */
+#ab_rule3 {
+  left: 1050px;
+  top: 618px;
+  width: 30px;
+  height: 1px;
+  background: #cccccc;
+  z-index: 10;
+}
+
+/* RIGHT — VIDEO LABEL */
+#ab_label3 {
+  left: 1050px;
+  top: 600px;
+}
+
+/* RIGHT — BRAND VIDEO (16:9) */
+#ab_video {
+  left: 1050px;
+  top: 641px;
+  width: 720px;
+  height: 405px;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* =============================================
+   HEADER
+============================================= */
+#ab_brand_logo {
+  left: 81px;
+  top: 17px;
+  width: 90px;
+  height: 28px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.6s ease;
+}
+
+#ab_brand_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+#ab_brand_logo:hover {
+  opacity: 0.45;
+}
+
+#ab_page_title {
+  left: 765px;
+  top: 15px;
+  width: 120px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  z-index: 20;
+}
+
+#ab_page_year {
+  left: 1035px;
+  top: 16px;
+  width: 51px;
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: 200;
+  z-index: 20;
+}
+
+#ab_menu_group {
+  left: 1737px;
+  top: 14px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+  color: #555555;
+  z-index: 20;
+}
+
+#ab_menu_group span {
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+#ab_menu_group span:hover {
+  opacity: 0.45;
+}
+
+/* =============================================
+   RIGHT PANEL — SECTION LABELS
+============================================= */
+.ab-section-label {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  color: #aaaaaa;
+  letter-spacing: 0.15em;
+  z-index: 10;
+}
+
+#ab_label1 {
+  left: 1050px;
+  top: 125px;
+}
+
+#ab_label2 {
+  left: 1050px;
+  top: 438px;
+}
+
+/* =============================================
+   RIGHT PANEL — RULES
+============================================= */
+#ab_rule1 {
+  left: 1050px;
+  top: 143px;
+  width: 50px;
+  height: 1px;
+  background: #cccccc;
+  z-index: 10;
+}
+
+#ab_rule2 {
+  left: 1050px;
+  top: 456px;
+  width: 30px;
+  height: 1px;
+  background: #cccccc;
+  z-index: 10;
+}
+
+
+/* =============================================
+   RIGHT PANEL — TEXT
+============================================= */
+#ab_statement {
+  left: 1050px;
+  top: 165px;
+  width: 560px;
+  font-size: 23px;
+  line-height: 1.55;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  z-index: 10;
+}
+
+#ab_body1 {
+  left: 1050px;
+  top: 300px;
+  width: 560px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: #222222;
+  letter-spacing: 0.025em;
+  z-index: 10;
+}
+
+#ab_body2 {
+  left: 1050px;
+  top: 479px;
+  width: 560px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: #222222;
+  letter-spacing: 0.025em;
+  z-index: 10;
+}
+
+
+/* =============================================
+   PAGE ENTRY ANIMATION
+============================================= */
+@keyframes ab-entry-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ab-wrapper.is-ready #ab_center_line { animation: ab-entry-fade 0.5s ease 0.03s both; }
+.ab-wrapper.is-ready #ab_watermark   { animation: ab-entry-fade 0.7s ease 0.02s both; }
+
+.ab-wrapper.is-ready #ab_left_label  { animation: ab-entry-fade 0.4s ease 0.04s both; }
+.ab-wrapper.is-ready #ab_obj1        { animation: ab-entry-fade 0.5s ease 0.05s both; }
+.ab-wrapper.is-ready #ab_obj2        { animation: ab-entry-fade 0.5s ease 0.10s both; }
+.ab-wrapper.is-ready #ab_obj3        { animation: ab-entry-fade 0.5s ease 0.15s both; }
+.ab-wrapper.is-ready #ab_video       { animation: ab-entry-fade 0.5s ease 0.20s both; }
+
+.ab-wrapper.is-ready #ab_brand_logo,
+.ab-wrapper.is-ready #ab_page_title,
+.ab-wrapper.is-ready #ab_page_year,
+.ab-wrapper.is-ready #ab_menu_group  { animation: ab-entry-fade 0.4s ease 0.08s both; }
+
+.ab-wrapper.is-ready #ab_label1,
+.ab-wrapper.is-ready #ab_rule1,
+.ab-wrapper.is-ready #ab_statement   { animation: ab-entry-fade 0.5s ease 0.12s both; }
+
+.ab-wrapper.is-ready #ab_body1,
+.ab-wrapper.is-ready #ab_rule2,
+.ab-wrapper.is-ready #ab_label2,
+.ab-wrapper.is-ready #ab_body2       { animation: ab-entry-fade 0.5s ease 0.16s both; }
+
+.ab-wrapper.is-ready #ab_rule3,
+.ab-wrapper.is-ready #ab_label3      { animation: ab-entry-fade 0.5s ease 0.20s both; }
+
+/* initial hidden state */
+#ab_center_line, #ab_left_label,
+#ab_obj1, #ab_obj2, #ab_obj3, #ab_video,
+#ab_brand_logo, #ab_page_title, #ab_page_year, #ab_menu_group,
+#ab_label1, #ab_rule1, #ab_statement,
+#ab_body1, #ab_rule2, #ab_label2, #ab_body2,
+#ab_rule3, #ab_label3 {
+  opacity: 0;
+}

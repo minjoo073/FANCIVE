@@ -352,6 +352,25 @@ function getHashId() {
     });
   }
 
+  // ── Menu navigation ───────────────────────────────────
+  function fadeNav(url) {
+    document.body.style.transition = 'opacity 0.45s ease';
+    document.body.style.opacity = '0';
+    setTimeout(function () { window.location.href = url; }, 460);
+  }
+
+  var menuSpans = document.querySelectorAll('#ld_menu_group span');
+  menuSpans.forEach(function (span) {
+    var text = span.textContent.trim();
+    if (text === 'ABOUT') {
+      span.style.cursor = 'pointer';
+      span.addEventListener('click', function () { fadeNav('about.html'); });
+    } else if (text === 'ARCHIVE') {
+      span.style.cursor = 'pointer';
+      span.addEventListener('click', function () { fadeNav('archive.html'); });
+    }
+  });
+
   // ── Entry animation ───────────────────────────────────
   setTimeout(function () {
     document.body.classList.add('is-visible');
