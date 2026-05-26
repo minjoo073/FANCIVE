@@ -59,7 +59,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #fbfbfb;
+  background: #1a1816;
   font-family: 'Switzer', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,7 +81,7 @@ body.is-visible {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: #fbfbfb;
+  background: #1a1816;
 }
 
 /* =============================================

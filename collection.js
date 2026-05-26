@@ -23,10 +23,49 @@
     if (wrapper) wrapper.classList.add('is-ready');
   }, 60);
 
+  // Neighbor fade on hover
+  var LOOK_IDS = ['c_look01','c_look02','c_look03','c_look04','c_look05','c_look06','c_hero_main'];
+  var SCALE_MAP = { c_look04: 1.015 };
+  var hoveredId = null;
+
+  LOOK_IDS.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+
+    el.addEventListener('mouseenter', function() {
+      hoveredId = id;
+      LOOK_IDS.forEach(function(otherId) {
+        var other = document.getElementById(otherId);
+        if (!other) return;
+        if (otherId === id) {
+          other.style.opacity = '1';
+          other.style.transform = 'scale(' + (SCALE_MAP[id] || 1.02) + ')';
+          other.style.zIndex = '20';
+        } else {
+          other.style.opacity = '0.22';
+          other.style.transform = '';
+          other.style.zIndex = '';
+        }
+      });
+    });
+
+    el.addEventListener('mouseleave', function() {
+      if (hoveredId !== id) return;
+      hoveredId = null;
+      LOOK_IDS.forEach(function(otherId) {
+        var other = document.getElementById(otherId);
+        if (!other) return;
+        other.style.opacity = '1';
+        other.style.transform = '';
+        other.style.zIndex = '';
+      });
+    });
+  });
+
   // Navigate to look detail page
   function magneticNavigate(url) {
     var overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#fbfbfb;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
     document.body.appendChild(overlay);
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { overlay.style.opacity = '1'; });

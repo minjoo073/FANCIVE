@@ -343,7 +343,7 @@ function getHashId() {
     logo.addEventListener('click', function (e) {
       e.preventDefault();
       var overlay = document.createElement('div');
-      overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
+      overlay.style.cssText = 'position:fixed;inset:0;background:#fbfbfb;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
       document.body.appendChild(overlay);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { overlay.style.opacity = '1'; });
