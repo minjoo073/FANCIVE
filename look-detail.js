@@ -6,13 +6,13 @@
 
   var lookDescs = [
     null,
-    'Soft restraint pressed\ninto quiet fabric.\nHeld at the surface.',
+    'Soft restraint pressed\ninto quiet fabric.',
     'Faded intimacy layered\nover washed structure.',
     'Cold distance held\nin woven negative space.',
-    'Delicate compression,\na lingering atmosphere.\nNeither arriving nor leaving.',
+    'Delicate compression,\na lingering atmosphere.',
     'Blurred at the edge —\nthe form resists.',
     'Intimate and undone,\nheld in pale reserve.',
-    'A final arrangement,\nstill and deliberate.\nThe work complete.'
+    'A final arrangement,\nstill and deliberate.'
   ];
 
   // fallback colors used before image extraction completes
@@ -26,6 +26,28 @@
     { colors: ['#c8ccce', '#d0d4d6', '#bec4c8'] },
     { colors: ['#dcd6d4', '#e4dedc', '#ccc6c4'] },
     { colors: ['#c0bcb8', '#cac6c2', '#b0aca8'] }
+  ];
+
+  var lookMaterialPositions = [
+    null,
+    { left: '1450px', top: '90px'  },  // VISCOSE — top right, above number
+    { left: '1200px', top: '800px' },  // NYLON   — bottom center
+    { left: '1000px', top: '810px' },  // ORGANZA — bottom left
+    { left: '1480px', top: '76px'  },  // LINEN   — top right, above number
+    { left: '1480px', top: '800px' },  // JERSEY  — bottom right
+    { left: '1100px', top: '800px' },  // CHIFFON — bottom center-left
+    { left: '1480px', top: '790px' },  // CREPE   — bottom right
+  ];
+
+  var lookNotePositions = [
+    null,
+    { left: '1590px', top: '490px' },  // below palette, far right
+    { left: '1590px', top: '700px' },  // far right, lower
+    { left: '1590px', top: '560px' },  // far right, mid
+    { left: '1590px', top: '800px' },  // far right, bottom
+    { left: '1200px', top: '825px' },  // below number, center (x differs from material)
+    { left: '1590px', top: '560px' },  // far right, mid
+    { left: '1200px', top: '815px' },  // below number, center
   ];
 
   var lookDetails = [
@@ -143,8 +165,8 @@ function getHashId() {
     var nid = id < TOTAL_LOOKS ? id + 1 : 1;
     if (pageLabel) pageLabel.textContent = 'LOOK ' + pad(id);
     if (descEl)    descEl.textContent    = lookDescs[id] || '';
-    if (prevBtn)   prevBtn.textContent   = '← LOOK ' + pad(pid);
-    if (nextBtn)   nextBtn.textContent   = 'LOOK ' + pad(nid) + ' →';
+    if (prevBtn)   prevBtn.textContent   = '← ' + pad(pid);
+    if (nextBtn)   nextBtn.textContent   = pad(nid) + ' →';
     document.title = 'FANCIVE — LOOK ' + pad(id);
     history.replaceState(null, '', '#' + id);
 
@@ -162,6 +184,20 @@ function getHashId() {
 
     // Archive number
     if (archiveNumEl) archiveNumEl.textContent = 'N° ' + pad(id);
+
+    // Per-look note position
+    var notePos = lookNotePositions[id];
+    if (notePos && lookNoteEl) {
+      lookNoteEl.style.left = notePos.left;
+      lookNoteEl.style.top  = notePos.top;
+    }
+
+    // Per-look material word position
+    var matPos = lookMaterialPositions[id];
+    if (matPos && materialWordEl) {
+      materialWordEl.style.left = matPos.left;
+      materialWordEl.style.top  = matPos.top;
+    }
   }
 
   // ── Thumbnail pose switch (within same look) ──────────

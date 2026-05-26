@@ -242,7 +242,7 @@ body.is-visible {
   text-align: center;
   font-size: 24px;
   line-height: 32px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.12em;
   z-index: 20;
 }
@@ -267,20 +267,21 @@ body.is-visible {
 #ld_look_subtitle {
   left: 1082px;
   top: 133px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 15px;
-  font-weight: 300;
-  color: #aaaaaa;
+  font-weight: 200;
+  color: #888888;
   z-index: 10;
 }
 
 #ld_look_desc {
   left: 1082px;
   top: 178px;
-  width: 300px;
-  font-size: 30px;
+  width: 500px;
+  font-size: 32px;
   line-height: 148%;
-  font-weight: 200;
+  font-weight: 300;
+  color: #181818;
   white-space: pre-line;
   z-index: 10;
 }
@@ -291,7 +292,7 @@ body.is-visible {
   font-size: 13px;
   line-height: 17px;
   font-weight: 200;
-  color: #999999;
+  color: #888888;
   letter-spacing: 0.04em;
   z-index: 10;
 }
@@ -308,7 +309,7 @@ body.is-visible {
   line-height: 1;
   letter-spacing: 0.30em;
   font-weight: 200;
-  color: #c8c8c8;
+  color: #aaaaaa;
   z-index: 10;
   pointer-events: none;
   user-select: none;
@@ -319,72 +320,56 @@ body.is-visible {
 ============================================= */
 #ld_detail_fabric_label,
 #ld_detail_styling_label {
-  left: 1520px;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 14px;
-  font-weight: 300;
+  font-weight: 200;
   letter-spacing: 0.18em;
-  color: #aaaaaa;
+  color: #909090;
   z-index: 10;
 }
 
-#ld_detail_fabric_label  { top: 136px; }
-#ld_detail_styling_label { top: 235px; }
+#ld_detail_fabric_label  { left: 1082px; top: 368px; }
+#ld_detail_styling_label { left: 1268px; top: 368px; }
 
 #ld_detail_fabric,
 #ld_detail_styling {
-  left: 1520px;
-  width: 280px;
-  font-size: 17px;
-  line-height: 148%;
+  font-size: 16px;
+  line-height: 175%;
   font-weight: 300;
-  color: #111111;
+  color: #252525;
   white-space: pre-line;
+  width: 160px;
   z-index: 10;
 }
 
-#ld_detail_fabric  { top: 153px; }
-#ld_detail_styling { top: 252px; left: 1507px; }
-
-/* STYLING section breaks from FABRIC alignment — intentional editorial offset */
-#ld_detail_styling_label { left: 1507px; }
-#ld_rule_styling         { left: 1507px; width: 293px; }
+#ld_detail_fabric  { left: 1082px; top: 384px; }
+#ld_detail_styling { left: 1268px; top: 384px; }
 
 /* =============================================
    DETAIL PANEL — RULE LINES
 ============================================= */
 #ld_rule_fabric,
 #ld_rule_styling {
-  left: 1520px;
-  width: 280px;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.10);
-  z-index: 10;
+  display: none;
 }
 
-#ld_rule_fabric  { top: 130px; }
-#ld_rule_styling { top: 229px; }
-
 /* =============================================
-   EDITORIAL CONSTRUCTION NOTE
+   EDITORIAL CONSTRUCTION NOTE — position set per-look via JS
 ============================================= */
 #ld_look_note {
-  left: 1110px;
-  top: 400px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 185%;
   font-weight: 300;
-  color: #b8b8b8;
+  color: #888888;
   white-space: pre-line;
+  max-width: 180px;
   z-index: 10;
 }
 
 /* =============================================
-   LARGE MATERIAL KEYWORD (editorial background word)
+   LARGE MATERIAL KEYWORD — position set per-look via JS
 ============================================= */
 #ld_material_word {
-  left: 1052px;
-  top: 530px;
   font-size: 82px;
   line-height: 1;
   font-weight: 200;
@@ -399,33 +384,33 @@ body.is-visible {
    COLOUR PALETTE
 ============================================= */
 #ld_palette_wrap {
-  left: 1520px;
-  top: 370px;
-  width: 280px;
+  left: 1082px;
+  top: 492px;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  flex-direction: row;
+  gap: 20px;
   z-index: 4;
 }
 
 .ld-palette-swatch {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .ld-palette-block {
-  width: 280px;
-  height: 120px;
+  width: 60px;
+  height: 6px;
   flex-shrink: 0;
 }
 
 .ld-palette-name {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
   letter-spacing: 0.18em;
-  font-weight: 300;
-  color: #999999;
+  font-weight: 200;
+  color: #909090;
 }
 
 /* =============================================
@@ -445,7 +430,7 @@ body.is-visible {
   font-size: 13px;
   line-height: 17px;
   font-weight: 200;
-  color: #cccccc;
+  color: #bbbbbb;
   cursor: pointer;
   transition: color 0.3s ease;
   text-align: center;
@@ -472,7 +457,7 @@ body.is-visible {
   line-height: 1;
   letter-spacing: 0.10em;
   font-weight: 200;
-  color: #bbbbbb;
+  color: #888888;
   text-align: center;
   z-index: 20;
   pointer-events: none;
@@ -489,7 +474,7 @@ body.is-visible {
   line-height: 1;
   letter-spacing: 0.22em;
   font-weight: 200;
-  color: #bbbbbb;
+  color: #888888;
   z-index: 10;
   pointer-events: none;
   user-select: none;
@@ -501,10 +486,11 @@ body.is-visible {
 #ld_prev_btn,
 #ld_next_btn {
   top: 940px;
-  font-size: 14px;
-  line-height: 17px;
-  font-weight: 300;
-  color: #000000;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 200;
+  letter-spacing: 0.08em;
+  color: #999999;
   cursor: pointer;
   z-index: 20;
 }
@@ -527,7 +513,7 @@ body.is-visible {
 
 @keyframes ld-entry-fade-dim {
   from { opacity: 0; }
-  to   { opacity: 0.06; }
+  to   { opacity: 0.03; }
 }
 
 @keyframes ld-entry-fade-mat {

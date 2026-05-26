@@ -185,6 +185,23 @@ body.is-visible {
 }
 
 /* =============================================
+   GHOST YEAR — typographic background texture
+============================================= */
+#c_ghost_year {
+  left: 540px;
+  top: 730px;
+  width: auto;
+  font-size: 290px;
+  line-height: 1;
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  color: #000000;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+/* =============================================
    CENTER LINE — x:960, full height, #999 20%
 ============================================= */
 #c_center_line {
@@ -195,6 +212,8 @@ body.is-visible {
   background: rgba(153, 153, 153, 0.20);
   box-shadow: 0 4px 4px rgba(153, 153, 153, 0.25);
   z-index: 8;
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 710px, transparent 740px, transparent 1010px, black 1030px, black 100%);
+  mask-image: linear-gradient(to bottom, black 0, black 710px, transparent 740px, transparent 1010px, black 1030px, black 100%);
 }
 
 /* =============================================
@@ -344,6 +363,11 @@ body.is-visible {
   to   { opacity: 1; }
 }
 
+@keyframes c-ghost-fade {
+  from { opacity: 0; }
+  to   { opacity: 0.05; }
+}
+
 .c-wrapper.is-ready #c_hero_main  { animation: c-entry-fade-still 0.5s ease 0.05s both; }
 .c-wrapper.is-ready #c_look01     { animation: c-entry-fade-still 0.5s ease 0.05s both; }
 .c-wrapper.is-ready #c_look02     { animation: c-entry-fade-still 0.5s ease 0.08s both; }
@@ -359,6 +383,7 @@ body.is-visible {
 .c-wrapper.is-ready #c_mood_note,
 .c-wrapper.is-ready #c_side_note  { animation: c-entry-fade-still 0.4s ease 0.18s both; }
 .c-wrapper.is-ready .c-idx        { animation: c-entry-fade-still 0.4s ease 0.22s both; }
+.c-wrapper.is-ready #c_ghost_year { animation: c-ghost-fade 1.0s ease 0.25s both; }
 
 .c-wrapper.is-ready #c_center_line { animation: c-entry-fade-still 0.5s ease 0.03s both; }
 
@@ -366,6 +391,6 @@ body.is-visible {
 #c_center_line,
 #c_hero_main, #c_look01, #c_look02, #c_look03, #c_look04, #c_look05, #c_look06,
 #c_brand_logo, #c_page_title, #c_page_year, #c_menu_group,
-#c_brand_desc, #c_mood_note, #c_side_note, .c-idx {
+#c_brand_desc, #c_mood_note, #c_side_note, .c-idx, #c_ghost_year {
   opacity: 0;
 }
