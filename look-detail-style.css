@@ -6,11 +6,7 @@
   margin: 0;
   padding: 0;
 }
-
-img {
-  display: block;
-  border: none;
-}
+img { display: block; border: none; }
 
 /* =============================================
    FONT FACE — Switzer
@@ -19,43 +15,25 @@ img {
   font-family: 'Switzer';
   src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
        url('assets/fonts/Switzer-Extralight.woff') format('woff');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 200; font-style: normal; font-display: swap;
 }
-
 @font-face {
   font-family: 'Switzer';
   src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
        url('assets/fonts/Switzer-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 300; font-style: normal; font-display: swap;
 }
-
 @font-face {
   font-family: 'Switzer';
   src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
        url('assets/fonts/Switzer-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Medium.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 
 /* =============================================
    BASE
 ============================================= */
-html,
-body {
+html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -67,12 +45,9 @@ body {
 
 body {
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.55s ease;
 }
-
-body.is-visible {
-  opacity: 1;
-}
+body.is-visible { opacity: 1; }
 
 /* =============================================
    SCALE CONTAINER
@@ -98,486 +73,118 @@ body.is-visible {
 }
 
 /* =============================================
-   ELEMENT BASE
+   SLIDES CONTAINER
 ============================================= */
-.ld-el {
+#ld_slides {
   position: absolute;
-}
-
-.ld-text {
-  font-family: 'Switzer', sans-serif;
-  color: #000000;
-  letter-spacing: 0;
+  inset: 0;
 }
 
 /* =============================================
-   CENTER LINE
+   LOOK SLIDE
 ============================================= */
-#ld_center_line {
-  left: 960px;
-  top: 0;
-  width: 1px;
-  height: 1080px;
-  background: rgba(153, 153, 153, 0.20);
-  box-shadow: 0 4px 4px rgba(153, 153, 153, 0.25);
-  z-index: 8;
-}
-
-/* =============================================
-   MAIN IMAGE
-============================================= */
-#ld_main_img {
-  left: 170px;
-  top: 55px;
-  width: 490px;
-  height: 940px;
-  object-fit: cover;
-  object-position: center top;
-  z-index: 5;
-}
-
-/* =============================================
-   POSE INDICATOR DOTS
-============================================= */
-#ld_pose_dots {
-  left: 170px;
-  top: 1012px;
-  width: 490px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 9px;
-  z-index: 15;
-}
-
-.ld-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #d0d0d0;
-  transition: background 0.35s ease, transform 0.35s ease;
-  flex-shrink: 0;
-}
-
-.ld-dot.is-active {
-  background: #000000;
-  transform: scale(1.2);
-}
-
-/* =============================================
-   THUMBNAIL COLUMN
-============================================= */
-#ld_thumb_col {
-  left: 700px;
-  top: 55px;
-  width: 90px;
-  height: 940px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 10;
-}
-
-.ld-thumb {
-  width: 90px;
-  height: 177px;
-  object-fit: cover;
-  object-position: center top;
-  cursor: pointer;
-  opacity: 0.35;
-  transition: opacity 0.3s ease;
-  flex-shrink: 0;
-}
-
-.ld-thumb.is-active {
-  opacity: 1;
-}
-
-.ld-thumb:hover:not(.is-active) {
-  opacity: 0.62;
-}
-
-/* =============================================
-   WATERMARK LOOK NUMBER
-============================================= */
-#ld_look_bg_num {
-  left: 990px;
-  top: 260px;
-  font-size: 460px;
-  line-height: 1;
-  font-weight: 200;
-  color: #000000;
-  letter-spacing: -0.03em;
-  z-index: 1;
+.ld-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
   pointer-events: none;
-  user-select: none;
+}
+
+.ld-slide.is-current {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =============================================
+   LOOK IMAGES
+============================================= */
+.ld-img {
+  position: absolute;
+  object-fit: fill;
 }
 
 /* =============================================
    HEADER
 ============================================= */
-#ld_brand_logo {
-  left: 81px;
-  top: 17px;
-  width: 90px;
-  height: 28px;
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 20;
-  transition: opacity 0.6s ease;
+#ld_header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  z-index: 100;
 }
 
-#ld_brand_logo img {
-  width: 100%;
-  height: 100%;
+/* =============================================
+   LOGO
+============================================= */
+#ld_logo {
+  display: block;
+  text-decoration: none;
+  height: 22px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+#ld_logo img {
+  height: 22px;
+  width: auto;
   object-fit: contain;
   object-position: left center;
-  display: block;
 }
-
-#ld_page_look_num {
-  left: 876px;
-  top: 15px;
-  width: 168px;
-  text-align: center;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  z-index: 20;
-}
-
-#ld_menu_group {
-  left: 1737px;
-  top: 14px;
-  width: 63px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 200;
-  color: #555555;
-  z-index: 20;
-}
+body.is-visible #ld_logo       { opacity: 1; }
+body.is-visible #ld_logo:hover { opacity: 0.4; transition: opacity 0.3s ease; }
 
 /* =============================================
-   RIGHT CONTENT
+   LOOK LABEL (center)
 ============================================= */
-#ld_look_subtitle {
-  left: 1082px;
-  top: 133px;
-  font-size: 13px;
-  line-height: 15px;
-  font-weight: 200;
-  color: #888888;
-  z-index: 10;
-}
-
-#ld_look_desc {
-  left: 1082px;
-  top: 178px;
-  width: 500px;
-  font-size: 32px;
-  line-height: 148%;
-  font-weight: 300;
-  color: #181818;
-  white-space: pre-line;
-  z-index: 10;
-}
-
-#ld_pose_count {
-  left: 1082px;
-  top: 870px;
-  font-size: 13px;
-  line-height: 17px;
-  font-weight: 200;
-  color: #888888;
-  letter-spacing: 0.04em;
-  z-index: 10;
-}
-
-/* =============================================
-   VERTICAL BRAND TEXT (C)
-============================================= */
-#ld_vert_text {
-  left: 963px;
-  top: 490px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 11px;
+#ld_look_label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
   line-height: 1;
+  font-weight: 300;
+  color: #333;
   letter-spacing: 0.30em;
-  font-weight: 200;
-  color: #aaaaaa;
-  z-index: 10;
-  pointer-events: none;
-  user-select: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.15s;
 }
+body.is-visible #ld_look_label { opacity: 1; }
 
 /* =============================================
-   DETAIL PANEL — FABRIC / STYLING (D)
-============================================= */
-#ld_detail_fabric_label,
-#ld_detail_styling_label {
-  font-size: 13px;
-  line-height: 14px;
-  font-weight: 200;
-  letter-spacing: 0.18em;
-  color: #909090;
-  z-index: 10;
-}
-
-#ld_detail_fabric_label  { left: 1082px; top: 368px; }
-#ld_detail_styling_label { left: 1268px; top: 368px; }
-
-#ld_detail_fabric,
-#ld_detail_styling {
-  font-size: 16px;
-  line-height: 175%;
-  font-weight: 300;
-  color: #252525;
-  white-space: pre-line;
-  width: 160px;
-  z-index: 10;
-}
-
-#ld_detail_fabric  { left: 1082px; top: 384px; }
-#ld_detail_styling { left: 1268px; top: 384px; }
-
-/* =============================================
-   DETAIL PANEL — RULE LINES
-============================================= */
-#ld_rule_fabric,
-#ld_rule_styling {
-  display: none;
-}
-
-/* =============================================
-   EDITORIAL CONSTRUCTION NOTE — position set per-look via JS
-============================================= */
-#ld_look_note {
-  font-size: 13px;
-  line-height: 185%;
-  font-weight: 300;
-  color: #888888;
-  white-space: pre-line;
-  max-width: 180px;
-  z-index: 10;
-}
-
-/* =============================================
-   LARGE MATERIAL KEYWORD — position set per-look via JS
-============================================= */
-#ld_material_word {
-  font-size: 82px;
-  line-height: 1;
-  font-weight: 200;
-  color: #000000;
-  letter-spacing: -0.02em;
-  z-index: 2;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* =============================================
-   COLOUR PALETTE
-============================================= */
-#ld_palette_wrap {
-  left: 1082px;
-  top: 492px;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  z-index: 4;
-}
-
-.ld-palette-swatch {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.ld-palette-block {
-  width: 60px;
-  height: 6px;
-  flex-shrink: 0;
-}
-
-.ld-palette-name {
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.18em;
-  font-weight: 200;
-  color: #909090;
-}
-
-/* =============================================
-   LOOK INDEX STRIP (A)
+   LOOK INDEX STRIP (right)
 ============================================= */
 #ld_look_index {
-  left: 1836px;
-  top: 409px;
-  width: 30px;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  z-index: 20;
-}
-
-.ld-idx-item {
-  font-size: 13px;
-  line-height: 17px;
-  font-weight: 200;
-  color: #bbbbbb;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  text-align: center;
-  text-shadow: 0 1px 5px rgba(248, 247, 245, 0.7);
-}
-
-.ld-idx-item.is-current {
-  font-weight: 500;
-  color: #000000;
-}
-
-.ld-idx-item:hover:not(.is-current) {
-  color: #777777;
-}
-
-/* =============================================
-   ARCHIVE NUMBER
-============================================= */
-#ld_archive_num {
-  left: 1836px;
-  top: 1050px;
-  width: 30px;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.10em;
-  font-weight: 200;
-  color: #888888;
-  text-align: center;
-  z-index: 20;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* =============================================
-   EDITORIAL FOOTER NOTE
-============================================= */
-#ld_footer_note {
-  left: 1082px;
-  top: 1052px;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.22em;
-  font-weight: 200;
-  color: #888888;
-  z-index: 10;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* =============================================
-   NAVIGATION
-============================================= */
-#ld_prev_btn,
-#ld_next_btn {
-  top: 940px;
-  font-size: 11px;
-  line-height: 14px;
-  font-weight: 200;
-  letter-spacing: 0.08em;
-  color: #999999;
-  cursor: pointer;
-  z-index: 20;
-}
-
-#ld_prev_btn {
-  left: 1082px;
-}
-
-#ld_next_btn {
-  left: 1420px;
-}
-
-/* =============================================
-   PAGE ENTRY — keyframe for most elements
-============================================= */
-@keyframes ld-entry-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes ld-entry-fade-dim {
-  from { opacity: 0; }
-  to   { opacity: 0.03; }
-}
-
-@keyframes ld-entry-fade-mat {
-  from { opacity: 0; }
-  to   { opacity: 0.09; }
-}
-
-.ld-wrapper.is-ready #ld_center_line   { animation: ld-entry-fade     0.5s ease 0.03s both; }
-.ld-wrapper.is-ready #ld_vert_text     { animation: ld-entry-fade     0.5s ease 0.20s both; }
-.ld-wrapper.is-ready #ld_main_img      { animation: ld-entry-fade     0.5s ease 0.05s both; }
-.ld-wrapper.is-ready #ld_thumb_col     { animation: ld-entry-fade     0.5s ease 0.08s both; }
-.ld-wrapper.is-ready #ld_look_bg_num   { animation: ld-entry-fade-dim 0.7s ease 0.12s both; }
-.ld-wrapper.is-ready #ld_page_look_num,
-.ld-wrapper.is-ready #ld_menu_group    { animation: ld-entry-fade     0.4s ease 0.10s both; }
-.ld-wrapper.is-ready #ld_look_subtitle,
-.ld-wrapper.is-ready #ld_look_desc,
-.ld-wrapper.is-ready #ld_pose_count    { animation: ld-entry-fade     0.4s ease 0.18s both; }
-.ld-wrapper.is-ready #ld_look_note     { animation: ld-entry-fade     0.4s ease 0.22s both; }
-.ld-wrapper.is-ready #ld_material_word { animation: ld-entry-fade-mat 0.8s ease 0.16s both; }
-.ld-wrapper.is-ready #ld_detail_fabric_label,
-.ld-wrapper.is-ready #ld_detail_fabric,
-.ld-wrapper.is-ready #ld_detail_styling_label,
-.ld-wrapper.is-ready #ld_detail_styling { animation: ld-entry-fade    0.4s ease 0.20s both; }
-.ld-wrapper.is-ready #ld_palette_wrap  { animation: ld-entry-fade     0.5s ease 0.10s both; }
-.ld-wrapper.is-ready #ld_look_index    { animation: ld-entry-fade     0.4s ease 0.24s both; }
-.ld-wrapper.is-ready #ld_pose_dots    { animation: ld-entry-fade     0.4s ease 0.25s both; }
-.ld-wrapper.is-ready #ld_rule_fabric,
-.ld-wrapper.is-ready #ld_rule_styling  { animation: ld-entry-fade     0.4s ease 0.20s both; }
-.ld-wrapper.is-ready #ld_footer_note,
-.ld-wrapper.is-ready #ld_archive_num   { animation: ld-entry-fade     0.4s ease 0.28s both; }
-
-/* =============================================
-   PAGE ENTRY — transition approach for interactive elements
-   (avoids animation-fill conflict with hover opacity)
-============================================= */
-#ld_brand_logo { opacity: 0; }
-#ld_prev_btn   { opacity: 0; }
-#ld_next_btn   { opacity: 0; }
-
-.ld-wrapper.is-ready #ld_brand_logo { opacity: 1; transition: opacity 0.4s ease 0.10s; }
-.ld-wrapper.is-ready #ld_prev_btn   { opacity: 1; transition: opacity 0.4s ease 0.22s; }
-.ld-wrapper.is-ready #ld_next_btn   { opacity: 1; transition: opacity 0.4s ease 0.22s; }
-
-.ld-wrapper.is-ready #ld_brand_logo:hover { opacity: 0.45; transition: opacity 0.6s ease; }
-.ld-wrapper.is-ready #ld_prev_btn:hover   { opacity: 0.45; transition: opacity 0.3s ease; }
-.ld-wrapper.is-ready #ld_next_btn:hover   { opacity: 0.45; transition: opacity 0.3s ease; }
-
-/* =============================================
-   INITIAL HIDDEN STATE
-============================================= */
-#ld_center_line,
-#ld_vert_text,
-#ld_main_img,
-#ld_thumb_col,
-#ld_look_bg_num,
-#ld_page_look_num, #ld_menu_group,
-#ld_look_subtitle, #ld_look_desc, #ld_look_note, #ld_pose_count,
-#ld_material_word,
-#ld_detail_fabric_label, #ld_detail_fabric,
-#ld_detail_styling_label, #ld_detail_styling,
-#ld_palette_wrap,
-#ld_look_index,
-#ld_pose_dots,
-#ld_rule_fabric, #ld_rule_styling,
-#ld_archive_num, #ld_footer_note {
+  gap: 22px;
+  align-items: center;
+  flex-shrink: 0;
   opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
 }
+body.is-visible #ld_look_index { opacity: 1; }
+
+.ld-idx {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 200;
+  color: #c0c0c0;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+.ld-idx.is-current {
+  color: #111;
+  font-weight: 400;
+}
+.ld-idx:hover:not(.is-current) { color: #666; }

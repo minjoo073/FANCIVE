@@ -2,63 +2,66 @@
   var CANVAS_W = 1920;
   var CANVAS_H = 1080;
   var TOTAL_LOOKS = 7;
-  var POSES = ['a', 'b', 'c', 'd', 'e'];
 
-  var lookDescs = [
+  // Per-look image positions from collection-sub-design-spec
+  var LAYOUT = [
     null,
-    'Soft restraint pressed\ninto quiet fabric.',
-    'Faded intimacy layered\nover washed structure.',
-    'Cold distance held\nin woven negative space.',
-    'Delicate compression,\na lingering atmosphere.',
-    'Blurred at the edge —\nthe form resists.',
-    'Intimate and undone,\nheld in pale reserve.',
-    'A final arrangement,\nstill and deliberate.'
-  ];
-
-  // fallback colors used before image extraction completes
-  var PALETTE_NAMES = ['OUTER', 'TOP', 'BOTTOM'];
-  var lookPalettes = [
-    null,
-    { colors: ['#d8d4ce', '#e0dbd2', '#ccc4b8'] },
-    { colors: ['#c8c4bf', '#d0ccc6', '#b8b2ac'] },
-    { colors: ['#ccd0d4', '#d4d8da', '#c0c6ca'] },
-    { colors: ['#d4cfc8', '#dedad4', '#c8c2ba'] },
-    { colors: ['#c8ccce', '#d0d4d6', '#bec4c8'] },
-    { colors: ['#dcd6d4', '#e4dedc', '#ccc6c4'] },
-    { colors: ['#c0bcb8', '#cac6c2', '#b0aca8'] }
-  ];
-
-  var lookMaterialPositions = [
-    null,
-    { left: '1450px', top: '90px'  },  // VISCOSE — top right, above number
-    { left: '1200px', top: '800px' },  // NYLON   — bottom center
-    { left: '1000px', top: '810px' },  // ORGANZA — bottom left
-    { left: '1480px', top: '76px'  },  // LINEN   — top right, above number
-    { left: '1480px', top: '800px' },  // JERSEY  — bottom right
-    { left: '1100px', top: '800px' },  // CHIFFON — bottom center-left
-    { left: '1480px', top: '790px' },  // CREPE   — bottom right
-  ];
-
-  var lookNotePositions = [
-    null,
-    { left: '1590px', top: '490px' },  // below palette, far right
-    { left: '1590px', top: '700px' },  // far right, lower
-    { left: '1590px', top: '560px' },  // far right, mid
-    { left: '1590px', top: '800px' },  // far right, bottom
-    { left: '1200px', top: '825px' },  // below number, center (x differs from material)
-    { left: '1590px', top: '560px' },  // far right, mid
-    { left: '1200px', top: '815px' },  // below number, center
-  ];
-
-  var lookDetails = [
-    null,
-    { fabric: 'Sheer viscose\nLightweight slip layer',   styling: 'Loose silhouette\nCold, minimal layering',   material: 'VISCOSE', note: 'Unlined construction\nworn close to skin'          },
-    { fabric: 'Draped nylon mesh\nBrushed cotton liner',  styling: 'Long-form silhouette\nFaded muted palette',  material: 'NYLON',   note: 'Extended hem\ndouble-layer construction'         },
-    { fabric: 'Organza overlay\nWashed silk base',        styling: 'Negative space volume\nUndone structure',    material: 'ORGANZA', note: 'Raw edge left intentional\nsingle-needle stitch'  },
-    { fabric: 'Linen-cotton blend\nRaw-edge finish',      styling: 'Compressed form\nQuiet tension',             material: 'LINEN',   note: 'Pre-washed once\nstone-ground surface'            },
-    { fabric: 'Stretch cotton jersey\nLight rib knit',    styling: 'Open-edge silhouette\nCold restraint',       material: 'JERSEY',  note: 'Bias-cut hem\nno facing, no lining'              },
-    { fabric: 'Chiffon drape\nWashed satin lining',       styling: 'Pale and undone\nIntimate distance',         material: 'CHIFFON', note: 'Slip layer hand-tacked\nsemi-opaque construction'  },
-    { fabric: 'Wool crepe\nSilk organza trim',            styling: 'Deliberate cut\nFinal, still form',          material: 'CREPE',   note: 'Bone structure\nhidden, felt not seen'            }
+    // look 01
+    [
+      { p: 'a', x: 31,   y: 47,  w: 468, h: 644 },
+      { p: 'b', x: 469,  y: 47,  w: 470, h: 716 },
+      { p: 'c', x: 960,  y: 47,  w: 462, h: 840 },
+      { p: 'd', x: 1437, y: 47,  w: 455, h: 329 },
+      { p: 'e', x: 1437, y: 391, w: 455, h: 347 },
+    ],
+    // look 02
+    [
+      { p: 'a', x: 32,   y: 47,  w: 558, h: 774 },
+      { p: 'b', x: 548,  y: 47,  w: 376, h: 542 },
+      { p: 'c', x: 968,  y: 47,  w: 452, h: 785 },
+      { p: 'd', x: 1437, y: 47,  w: 453, h: 330 },
+      { p: 'e', x: 1437, y: 390, w: 453, h: 347 },
+    ],
+    // look 03
+    [
+      { p: 'a', x: 31,   y: 47,  w: 567, h: 676 },
+      { p: 'b', x: 501,  y: 47,  w: 421, h: 556 },
+      { p: 'c', x: 968,  y: 47,  w: 453, h: 868 },
+      { p: 'd', x: 1436, y: 47,  w: 455, h: 329 },
+      { p: 'e', x: 1436, y: 391, w: 454, h: 346 },
+    ],
+    // look 04
+    [
+      { p: 'a', x: 30,   y: 47,  w: 566, h: 615 },
+      { p: 'b', x: 572,  y: 47,  w: 339, h: 691 },
+      { p: 'c', x: 968,  y: 47,  w: 453, h: 875 },
+      { p: 'd', x: 1436, y: 47,  w: 456, h: 328 },
+      { p: 'e', x: 1436, y: 391, w: 456, h: 348 },
+    ],
+    // look 05
+    [
+      { p: 'a', x: 31,   y: 47,  w: 528, h: 727 },
+      { p: 'b', x: 508,  y: 47,  w: 416, h: 556 },
+      { p: 'c', x: 968,  y: 47,  w: 454, h: 796 },
+      { p: 'd', x: 1436, y: 47,  w: 454, h: 330 },
+      { p: 'e', x: 1436, y: 387, w: 457, h: 487 },
+    ],
+    // look 06
+    [
+      { p: 'a', x: 31,   y: 47,  w: 610, h: 600 },
+      { p: 'b', x: 499,  y: 47,  w: 415, h: 709 },
+      { p: 'c', x: 969,  y: 47,  w: 451, h: 869 },
+      { p: 'd', x: 1436, y: 47,  w: 456, h: 329 },
+      { p: 'e', x: 1436, y: 390, w: 456, h: 440 },
+    ],
+    // look 07
+    [
+      { p: 'a', x: 31,   y: 47,  w: 527, h: 657 },
+      { p: 'b', x: 555,  y: 47,  w: 368, h: 570 },
+      { p: 'c', x: 969,  y: 47,  w: 454, h: 800 },
+      { p: 'd', x: 1437, y: 47,  w: 456, h: 331 },
+      { p: 'e', x: 1437, y: 391, w: 456, h: 396 },
+    ],
   ];
 
   // ── Scale ────────────────────────────────────────────
@@ -67,9 +70,9 @@
     if (!el) return;
     var vw = window.innerWidth, vh = window.innerHeight;
     var scale = Math.min(vw / CANVAS_W, vh / CANVAS_H);
-    var x = (vw - CANVAS_W * scale) / 2;
-    var y = (vh - CANVAS_H * scale) / 2;
-    el.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ')';
+    var tx = (vw - CANVAS_W * scale) / 2;
+    var ty = (vh - CANVAS_H * scale) / 2;
+    el.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
   }
   window.addEventListener('resize', scaleWrapper);
   scaleWrapper();
@@ -81,269 +84,108 @@
     return 'assets/images/collection_sub/look_' + pad(id) + '_' + pose + '.png';
   }
 
-function getHashId() {
+  function getHashId() {
     var h = parseInt(window.location.hash.replace('#', ''), 10);
     return (isNaN(h) || h < 1 || h > TOTAL_LOOKS) ? 1 : h;
   }
 
   // ── State ─────────────────────────────────────────────
-  var currentId   = getHashId();
-  var currentPose = 0;
+  var currentId  = getHashId();
   var isSwitching = false;
 
   // ── DOM refs ──────────────────────────────────────────
-  var mainImg      = document.getElementById('ld_main_img');
-  var thumbsEls    = document.querySelectorAll('.ld-thumb');
-  var bgNum        = document.getElementById('ld_look_bg_num');
-  var pageLabel    = document.getElementById('ld_page_look_num');
-  var descEl       = document.getElementById('ld_look_desc');
-  var prevBtn      = document.getElementById('ld_prev_btn');
-  var nextBtn      = document.getElementById('ld_next_btn');
-  var fabricEl     = document.getElementById('ld_detail_fabric');
-  var stylingEl    = document.getElementById('ld_detail_styling');
-  var paletteWrap = document.getElementById('ld_palette_wrap');
-  var palBlocks   = document.querySelectorAll('.ld-palette-block');
-  var palNames    = document.querySelectorAll('.ld-palette-name');
-  var idxItems     = document.querySelectorAll('.ld-idx-item');
-  var dotsEls      = document.querySelectorAll('.ld-dot');
-  var archiveNumEl   = document.getElementById('ld_archive_num');
-  var materialWordEl = document.getElementById('ld_material_word');
-  var lookNoteEl     = document.getElementById('ld_look_note');
+  var slidesEl  = document.getElementById('ld_slides');
+  var lookLabel = document.getElementById('ld_look_label');
+  var idxItems  = document.querySelectorAll('.ld-idx');
 
-  // ── Colour extraction ────────────────────────────────
-  var paletteCache = {};
+  // ── Build look slides ─────────────────────────────────
+  var slideEls = [];
 
-  function extractColors(img) {
-    var canvas = document.createElement('canvas');
-    var sw = Math.min(img.naturalWidth,  200);
-    var sh = Math.min(img.naturalHeight, 600);
-    canvas.width  = sw;
-    canvas.height = sh;
-    var ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, sw, sh);
-    // narrow centre column (20 % width) at 3 body-part y positions
-    var cx = Math.floor(sw * 0.50);
-    var hw = Math.floor(sw * 0.10);
-    var x0 = Math.max(0, cx - hw);
-    var pw = Math.min(hw * 2, sw - x0);
-    var ph = Math.max(4, Math.floor(sh * 0.10)); // 10 % height patch
-    var yFracs = [0.22, 0.50, 0.74];             // OUTER · TOP · BOTTOM
-    return yFracs.map(function (yf) {
-      var y0 = Math.max(0, Math.min(sh - ph, Math.floor(sh * yf - ph / 2)));
-      var d  = ctx.getImageData(x0, y0, pw, ph).data;
-      var r = 0, g = 0, b = 0;
-      for (var i = 0; i < d.length; i += 4) { r += d[i]; g += d[i+1]; b += d[i+2]; }
-      var n = d.length / 4;
-      return 'rgb(' + Math.round(r/n) + ',' + Math.round(g/n) + ',' + Math.round(b/n) + ')';
-    });
-  }
+  for (var i = 1; i <= TOTAL_LOOKS; i++) {
+    var slide = document.createElement('div');
+    slide.className = 'ld-slide';
+    slide.dataset.look = i;
 
-  function applyPalette(id) {
-    var p = lookPalettes[id];
-    // names — always OUTER / TOP / BOTTOM
-    palNames.forEach(function (n, i) { n.textContent = PALETTE_NAMES[i]; });
-    // colors — from cache, else show fallback + extract async
-    if (paletteCache[id]) {
-      palBlocks.forEach(function (b, i) { b.style.background = paletteCache[id][i]; });
-      return;
+    var imgs = LAYOUT[i];
+    for (var j = 0; j < imgs.length; j++) {
+      var d = imgs[j];
+      var img = document.createElement('img');
+      img.className = 'ld-img';
+      img.src = imgPath(i, d.p);
+      img.alt = '';
+      img.style.cssText =
+        'left:'   + d.x + 'px;' +
+        'top:'    + d.y + 'px;' +
+        'width:'  + d.w + 'px;' +
+        'height:' + d.h + 'px;' +
+        'z-index:' + (j + 1) + ';';
+      slide.appendChild(img);
     }
-    if (p) palBlocks.forEach(function (b, i) { b.style.background = p.colors[i]; });
-    var tmp = new Image();
-    tmp.onload = function () {
-      try {
-        var colors = extractColors(tmp);
-        paletteCache[id] = colors;
-        palBlocks.forEach(function (b, i) { b.style.background = colors[i]; });
-      } catch (e) { /* keep fallback */ }
-    };
-    tmp.src = imgPath(id, POSES[0]);
+
+    slidesEl.appendChild(slide);
+    slideEls.push(slide);
   }
 
-  // ── Update text / URL / index ─────────────────────────
-  function updateLabels(id) {
-    var pid = id > 1 ? id - 1 : TOTAL_LOOKS;
-    var nid = id < TOTAL_LOOKS ? id + 1 : 1;
-    if (pageLabel) pageLabel.textContent = 'LOOK ' + pad(id);
-    if (descEl)    descEl.textContent    = lookDescs[id] || '';
-    if (prevBtn)   prevBtn.textContent   = '← ' + pad(pid);
-    if (nextBtn)   nextBtn.textContent   = pad(nid) + ' →';
+  // ── UI update ─────────────────────────────────────────
+  function updateUI(id) {
+    if (lookLabel) lookLabel.textContent = 'LOOK  ' + pad(id);
     document.title = 'FANCIVE — LOOK ' + pad(id);
     history.replaceState(null, '', '#' + id);
-
-    // Detail panel
-    var detail = lookDetails[id];
-    if (fabricEl)       fabricEl.textContent       = detail ? detail.fabric   : '';
-    if (stylingEl)      stylingEl.textContent      = detail ? detail.styling  : '';
-    if (materialWordEl) materialWordEl.textContent = detail ? detail.material : '';
-    if (lookNoteEl)     lookNoteEl.textContent     = detail ? detail.note     : '';
-
-    // Look index active state
     idxItems.forEach(function (el) {
       el.classList.toggle('is-current', parseInt(el.dataset.look, 10) === id);
     });
-
-    // Archive number
-    if (archiveNumEl) archiveNumEl.textContent = 'N° ' + pad(id);
-
-    // Per-look note position
-    var notePos = lookNotePositions[id];
-    if (notePos && lookNoteEl) {
-      lookNoteEl.style.left = notePos.left;
-      lookNoteEl.style.top  = notePos.top;
-    }
-
-    // Per-look material word position
-    var matPos = lookMaterialPositions[id];
-    if (matPos && materialWordEl) {
-      materialWordEl.style.left = matPos.left;
-      materialWordEl.style.top  = matPos.top;
-    }
   }
 
-  // ── Thumbnail pose switch (within same look) ──────────
-  // slow=true : 자동 순환 (부드럽게), slow=false : 썸네일 클릭 (빠르게)
-  function setPose(poseIdx, slow) {
-    if (poseIdx === currentPose || !mainImg) return;
-    var outMs = slow ? 500 : 200;
-    var inMs  = slow ? 650 : 240;
-
-    mainImg.style.transition = 'opacity ' + (outMs / 1000) + 's ease-in';
-    mainImg.style.opacity    = '0';
-
-    setTimeout(function () {
-      mainImg.src = imgPath(currentId, POSES[poseIdx]);
-      // rAF×2 : src 반영 후 다음 렌더 프레임에 정확히 fade-in 시작
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          mainImg.style.transition = 'opacity ' + (inMs / 1000) + 's ease-out';
-          mainImg.style.opacity    = '1';
-        });
-      });
-    }, outMs);
-
-    thumbsEls.forEach(function (t, i) {
-      t.classList.toggle('is-active', i === poseIdx);
+  // ── Show look ─────────────────────────────────────────
+  function showLook(id, instant) {
+    slideEls.forEach(function (s) {
+      var target = parseInt(s.dataset.look, 10) === id;
+      if (instant) {
+        s.style.transition = 'none';
+        s.classList.toggle('is-current', target);
+        // force reflow so transition:none takes effect before re-enabling
+        s.offsetHeight; // eslint-disable-line no-unused-expressions
+        s.style.transition = '';
+      } else {
+        s.classList.toggle('is-current', target);
+      }
     });
-    dotsEls.forEach(function (d, i) {
-      d.classList.toggle('is-active', i === poseIdx);
-    });
-    currentPose = poseIdx;
+    updateUI(id);
   }
 
-  // ── Look switch (in-place) ────────────────────────────
+  // ── Switch look ───────────────────────────────────────
   function switchLook(newId) {
     if (newId === currentId || isSwitching) return;
     isSwitching = true;
-    currentPose = 0;
-
-    // Fade out main image + secondary + watermark number
-    if (mainImg) {
-      mainImg.style.transition = 'opacity 0.28s ease';
-      mainImg.style.opacity    = '0';
-    }
-    if (paletteWrap) {
-      paletteWrap.style.transition = 'opacity 0.28s ease';
-      paletteWrap.style.opacity    = '0';
-    }
-    if (bgNum) {
-      bgNum.style.transition = 'opacity 0.28s ease';
-      bgNum.style.opacity    = '0';
-    }
-    if (materialWordEl) {
-      materialWordEl.style.transition = 'opacity 0.22s ease';
-      materialWordEl.style.opacity    = '0';
-    }
-    if (lookNoteEl) {
-      lookNoteEl.style.transition = 'opacity 0.18s ease';
-      lookNoteEl.style.opacity    = '0';
-    }
-
-    setTimeout(function () {
-      currentId = newId;
-
-      // Swap main image
-      if (mainImg) {
-        mainImg.src              = imgPath(currentId, POSES[0]);
-        mainImg.style.transition = 'opacity 0.35s ease';
-        mainImg.style.opacity    = '1';
-      }
-
-      // Swap colour palette
-      applyPalette(currentId);
-      if (paletteWrap) {
-        paletteWrap.style.transition = 'opacity 0.35s ease';
-        paletteWrap.style.opacity    = '1';
-      }
-
-      // Swap thumbnails
-      thumbsEls.forEach(function (t, i) {
-        t.src = imgPath(currentId, POSES[i]);
-        t.classList.toggle('is-active', i === 0);
-      });
-
-      // Reset pose dots to first
-      dotsEls.forEach(function (d, i) {
-        d.classList.toggle('is-active', i === 0);
-      });
-
-      // Swap watermark number
-      if (bgNum) {
-        bgNum.textContent      = pad(currentId);
-        bgNum.style.transition = 'opacity 0.55s ease';
-        bgNum.style.opacity    = '0.04';
-      }
-
-      // Fade in editorial elements
-      if (materialWordEl) {
-        materialWordEl.style.transition = 'opacity 0.55s ease';
-        materialWordEl.style.opacity    = '0.09';
-      }
-      if (lookNoteEl) {
-        lookNoteEl.style.transition = 'opacity 0.35s ease';
-        lookNoteEl.style.opacity    = '1';
-      }
-
-      // Update labels & URL
-      updateLabels(currentId);
-
-      setTimeout(function () { isSwitching = false; startCycle(); }, 550);
-    }, 300);
+    currentId = newId;
+    showLook(currentId, false);
+    setTimeout(function () { isSwitching = false; }, 700);
   }
 
-  // ── Initialise ────────────────────────────────────────
-  updateLabels(currentId);
-  if (bgNum) bgNum.textContent = pad(currentId);
-  if (mainImg) mainImg.src = imgPath(currentId, POSES[0]);
-  applyPalette(currentId);
-  thumbsEls.forEach(function (t, i) {
-    t.src = imgPath(currentId, POSES[i]);
-    if (i === 0) t.classList.add('is-active');
-    t.addEventListener('click', function () { setPose(i, false); startCycle(); });
+  // ── Initialize ────────────────────────────────────────
+  showLook(currentId, true);
+
+  // ── Scroll navigation ─────────────────────────────────
+  var scrollTimer = null;
+  document.addEventListener('wheel', function (e) {
+    if (isSwitching || scrollTimer) return;
+    if (Math.abs(e.deltaY) < 30) return;
+    var newId = e.deltaY > 0
+      ? (currentId < TOTAL_LOOKS ? currentId + 1 : 1)
+      : (currentId > 1 ? currentId - 1 : TOTAL_LOOKS);
+    switchLook(newId);
+    scrollTimer = setTimeout(function () { scrollTimer = null; }, 750);
+  }, { passive: true });
+
+  // ── Keyboard navigation ───────────────────────────────
+  document.addEventListener('keydown', function (e) {
+    if (isSwitching) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      switchLook(currentId < TOTAL_LOOKS ? currentId + 1 : 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      switchLook(currentId > 1 ? currentId - 1 : TOTAL_LOOKS);
+    }
   });
-
-  // Initialise first dot
-  if (dotsEls[0]) dotsEls[0].classList.add('is-active');
-
-  // Hover over main image pauses auto-cycle
-  if (mainImg) {
-    mainImg.addEventListener('mouseenter', function () {
-      if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
-    });
-    mainImg.addEventListener('mouseleave', startCycle);
-  }
-
-  // ── Auto-cycle poses ──────────────────────────────────
-  var cycleTimer = null;
-
-  function startCycle() {
-    if (cycleTimer) clearInterval(cycleTimer);
-    cycleTimer = setInterval(function () {
-      if (isSwitching) return;
-      setPose((currentPose + 1) % POSES.length, true);
-    }, 2800);
-  }
-
-  startCycle();
 
   // ── Look index click ──────────────────────────────────
   idxItems.forEach(function (el) {
@@ -352,65 +194,19 @@ function getHashId() {
     });
   });
 
-  // ── Prev / Next buttons (in-place) ────────────────────
-  if (prevBtn) prevBtn.addEventListener('click', function () {
-    switchLook(currentId > 1 ? currentId - 1 : TOTAL_LOOKS);
-  });
-  if (nextBtn) nextBtn.addEventListener('click', function () {
-    switchLook(currentId < TOTAL_LOOKS ? currentId + 1 : 1);
-  });
-
-  // ── Scroll navigation (in-place) ─────────────────────
-  var scrollCooldown = false;
-  document.addEventListener('wheel', function (e) {
-    if (scrollCooldown || isSwitching) return;
-    if (Math.abs(e.deltaY) < 30) return;
-    scrollCooldown = true;
-    var newId = e.deltaY > 0
-      ? (currentId < TOTAL_LOOKS ? currentId + 1 : 1)
-      : (currentId > 1 ? currentId - 1 : TOTAL_LOOKS);
-    switchLook(newId);
-    setTimeout(function () { scrollCooldown = false; }, 950);
-  }, { passive: true });
-
-  // ── Logo → collection ─────────────────────────────────
-  var logo = document.getElementById('ld_brand_logo');
+  // ── Logo → collection (fade transition) ───────────────
+  var logo = document.getElementById('ld_logo');
   if (logo) {
     logo.addEventListener('click', function (e) {
       e.preventDefault();
-      var overlay = document.createElement('div');
-      overlay.style.cssText = 'position:fixed;inset:0;background:#fbfbfb;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
-      document.body.appendChild(overlay);
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { overlay.style.opacity = '1'; });
-      });
-      setTimeout(function () { window.location.href = 'collection.html'; }, 370);
+      document.body.style.transition = 'opacity 0.35s ease';
+      document.body.style.opacity = '0';
+      setTimeout(function () { window.location.href = 'collection.html'; }, 360);
     });
   }
-
-  // ── Menu navigation ───────────────────────────────────
-  function fadeNav(url) {
-    document.body.style.transition = 'opacity 0.45s ease';
-    document.body.style.opacity = '0';
-    setTimeout(function () { window.location.href = url; }, 460);
-  }
-
-  var menuSpans = document.querySelectorAll('#ld_menu_group span');
-  menuSpans.forEach(function (span) {
-    var text = span.textContent.trim();
-    if (text === 'ABOUT') {
-      span.style.cursor = 'pointer';
-      span.addEventListener('click', function () { fadeNav('about.html'); });
-    } else if (text === 'ARCHIVE') {
-      span.style.cursor = 'pointer';
-      span.addEventListener('click', function () { fadeNav('archive.html'); });
-    }
-  });
 
   // ── Entry animation ───────────────────────────────────
   setTimeout(function () {
     document.body.classList.add('is-visible');
-    var wrapper = document.querySelector('.ld-wrapper');
-    if (wrapper) wrapper.classList.add('is-ready');
   }, 60);
 })();

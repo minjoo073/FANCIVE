@@ -7,104 +7,31 @@
   <link rel="stylesheet" href="look-detail-style.css">
 </head>
 <body>
-
   <div class="ld-scale-container">
     <div class="ld-wrapper">
 
-      <!-- CENTER LINE -->
-      <div class="ld-el" id="ld_center_line"></div>
-
-      <!-- VERTICAL BRAND TEXT (C) -->
-      <div class="ld-el ld-text" id="ld_vert_text">FANCIVE</div>
-
-      <!-- MAIN IMAGE -->
-      <img class="ld-el" id="ld_main_img" src="" alt="">
-
-      <!-- POSE INDICATOR DOTS -->
-      <div class="ld-el" id="ld_pose_dots">
-        <span class="ld-dot"></span>
-        <span class="ld-dot"></span>
-        <span class="ld-dot"></span>
-        <span class="ld-dot"></span>
-        <span class="ld-dot"></span>
-      </div>
-
-      <!-- THUMBNAIL COLUMN -->
-      <div class="ld-el" id="ld_thumb_col">
-        <img class="ld-thumb" src="" alt="">
-        <img class="ld-thumb" src="" alt="">
-        <img class="ld-thumb" src="" alt="">
-        <img class="ld-thumb" src="" alt="">
-        <img class="ld-thumb" src="" alt="">
-      </div>
-
-      <!-- WATERMARK LOOK NUMBER -->
-      <div class="ld-el ld-text" id="ld_look_bg_num"></div>
+      <!-- LOOK SLIDES (built by JS) -->
+      <div id="ld_slides"></div>
 
       <!-- HEADER -->
-      <a class="ld-el" id="ld_brand_logo" href="collection.html"><img src="assets/images/left_logo.png" alt="FANCIVE"></a>
-      <div class="ld-el ld-text" id="ld_page_look_num"></div>
-      <nav class="ld-el ld-text" id="ld_menu_group">
-        <span>ABOUT</span>
-        <span>ARCHIVE</span>
-        <span>CONTACT</span>
-      </nav>
-
-      <!-- RIGHT CONTENT -->
-      <div class="ld-el ld-text" id="ld_look_subtitle">S/S 2026 — COLLECTION</div>
-      <div class="ld-el ld-text" id="ld_look_desc"></div>
-      <div class="ld-el ld-text" id="ld_look_note"></div>
-      <div class="ld-el ld-text" id="ld_material_word"></div>
-      <div class="ld-el ld-text" id="ld_pose_count">5 POSES</div>
-
-      <!-- DETAIL PANEL (D) -->
-      <div class="ld-el" id="ld_rule_fabric"></div>
-      <div class="ld-el ld-text" id="ld_detail_fabric_label">FABRIC</div>
-      <div class="ld-el ld-text" id="ld_detail_fabric"></div>
-      <div class="ld-el" id="ld_rule_styling"></div>
-      <div class="ld-el ld-text" id="ld_detail_styling_label">STYLING</div>
-      <div class="ld-el ld-text" id="ld_detail_styling"></div>
-
-      <!-- COLOUR PALETTE -->
-      <div class="ld-el" id="ld_palette_wrap">
-        <div class="ld-palette-swatch">
-          <div class="ld-palette-block" id="ld_pal_block_0"></div>
-          <span class="ld-palette-name" id="ld_pal_name_0"></span>
-        </div>
-        <div class="ld-palette-swatch">
-          <div class="ld-palette-block" id="ld_pal_block_1"></div>
-          <span class="ld-palette-name" id="ld_pal_name_1"></span>
-        </div>
-        <div class="ld-palette-swatch">
-          <div class="ld-palette-block" id="ld_pal_block_2"></div>
-          <span class="ld-palette-name" id="ld_pal_name_2"></span>
-        </div>
-      </div>
-
-      <!-- LOOK INDEX STRIP (A) -->
-      <div class="ld-el" id="ld_look_index">
-        <div class="ld-idx-item ld-text" data-look="1">01</div>
-        <div class="ld-idx-item ld-text" data-look="2">02</div>
-        <div class="ld-idx-item ld-text" data-look="3">03</div>
-        <div class="ld-idx-item ld-text" data-look="4">04</div>
-        <div class="ld-idx-item ld-text" data-look="5">05</div>
-        <div class="ld-idx-item ld-text" data-look="6">06</div>
-        <div class="ld-idx-item ld-text" data-look="7">07</div>
-      </div>
-
-      <!-- ARCHIVE NUMBER (bottom of look index column) -->
-      <div class="ld-el ld-text" id="ld_archive_num"></div>
-
-      <!-- EDITORIAL FOOTER -->
-      <div class="ld-el ld-text" id="ld_footer_note">FANCIVE — SS 26</div>
-
-      <!-- NAVIGATION -->
-      <div class="ld-el ld-text" id="ld_prev_btn"></div>
-      <div class="ld-el ld-text" id="ld_next_btn"></div>
+      <header id="ld_header">
+        <a id="ld_logo" href="collection.html">
+          <img src="assets/images/left_logo.png" alt="FANCIVE">
+        </a>
+        <div id="ld_look_label"></div>
+        <nav id="ld_look_index">
+          <span class="ld-idx" data-look="1">01</span>
+          <span class="ld-idx" data-look="2">02</span>
+          <span class="ld-idx" data-look="3">03</span>
+          <span class="ld-idx" data-look="4">04</span>
+          <span class="ld-idx" data-look="5">05</span>
+          <span class="ld-idx" data-look="6">06</span>
+          <span class="ld-idx" data-look="7">07</span>
+        </nav>
+      </header>
 
     </div>
   </div>
-
   <script src="look-detail.js"></script>
 </body>
 </html>
