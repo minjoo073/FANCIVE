@@ -65,13 +65,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  opacity: 0;
-  transition: opacity 0.6s ease;
+#c-page-overlay {
+  position: fixed;
+  inset: 0;
+  background: #1a1816;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1.3s cubic-bezier(0.4,0,0.2,1);
 }
 
-body.is-visible {
-  opacity: 1;
+#c-page-overlay.is-gone {
+  opacity: 0;
 }
 
 /* =============================================
@@ -347,18 +352,18 @@ body.is-visible {
 #c_look04, #c_look05, #c_look06,
 #c_hero_main {
   cursor: pointer;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 }
 
 /* =============================================
-   PAGE ENTRY ANIMATION — fast (subpage)
+   PAGE ENTRY ANIMATION
 ============================================= */
-@keyframes c-entry-fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0px); }
+@keyframes c-entry-emerge {
+  from { filter: blur(14px); transform: scale(1.03); }
+  to   { filter: blur(0px);  transform: scale(1);    }
 }
 
-@keyframes c-entry-fade-still {
+@keyframes c-entry-fade {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
@@ -368,28 +373,32 @@ body.is-visible {
   to   { opacity: 0.05; }
 }
 
-.c-wrapper.is-ready #c_hero_main  { animation: c-entry-fade-still 0.5s ease 0.05s both; }
-.c-wrapper.is-ready #c_look01     { animation: c-entry-fade-still 0.5s ease 0.05s both; }
-.c-wrapper.is-ready #c_look02     { animation: c-entry-fade-still 0.5s ease 0.08s both; }
-.c-wrapper.is-ready #c_look03     { animation: c-entry-fade-still 0.5s ease 0.11s both; }
-.c-wrapper.is-ready #c_look04     { animation: c-entry-fade-still 0.5s ease 0.14s both; }
-.c-wrapper.is-ready #c_look05     { animation: c-entry-fade-still 0.5s ease 0.17s both; }
-.c-wrapper.is-ready #c_look06     { animation: c-entry-fade-still 0.5s ease 0.20s both; }
+.c-wrapper.is-ready #c_hero_main  { animation: c-entry-emerge 1.8s cubic-bezier(0.4,0,0.2,1) 0.10s both; }
+.c-wrapper.is-ready #c_look01     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s both; }
+.c-wrapper.is-ready #c_look02     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.28s both; }
+.c-wrapper.is-ready #c_look03     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.42s both; }
+.c-wrapper.is-ready #c_look04     { animation: c-entry-emerge 1.8s cubic-bezier(0.4,0,0.2,1) 0.55s both; }
+.c-wrapper.is-ready #c_look05     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.68s both; }
+.c-wrapper.is-ready #c_look06     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.80s both; }
 .c-wrapper.is-ready #c_brand_logo,
 .c-wrapper.is-ready #c_page_title,
 .c-wrapper.is-ready #c_page_year,
-.c-wrapper.is-ready #c_menu_group { animation: c-entry-fade-still 0.4s ease 0.10s both; }
+.c-wrapper.is-ready #c_menu_group { animation: c-entry-fade 0.8s ease 0.35s both; }
 .c-wrapper.is-ready #c_brand_desc,
 .c-wrapper.is-ready #c_mood_note,
-.c-wrapper.is-ready #c_side_note  { animation: c-entry-fade-still 0.4s ease 0.18s both; }
-.c-wrapper.is-ready .c-idx        { animation: c-entry-fade-still 0.4s ease 0.22s both; }
-.c-wrapper.is-ready #c_ghost_year { animation: c-ghost-fade 1.0s ease 0.25s both; }
+.c-wrapper.is-ready #c_side_note  { animation: c-entry-fade 0.8s ease 0.50s both; }
+.c-wrapper.is-ready .c-idx        { animation: c-entry-fade 0.7s ease 0.60s both; }
+.c-wrapper.is-ready #c_ghost_year { animation: c-ghost-fade 1.6s ease 0.55s both; }
 
-.c-wrapper.is-ready #c_center_line { animation: c-entry-fade-still 0.5s ease 0.03s both; }
+.c-wrapper.is-ready #c_center_line { animation: c-entry-fade 1.0s ease 0.10s both; }
 
-/* initial hidden state */
+/* initial hidden state — images shown but blurred (overlay covers them); text/UI hidden */
+#c_hero_main, #c_look01, #c_look02, #c_look03, #c_look04, #c_look05, #c_look06 {
+  filter: blur(14px);
+  transform: scale(1.03);
+}
+
 #c_center_line,
-#c_hero_main, #c_look01, #c_look02, #c_look03, #c_look04, #c_look05, #c_look06,
 #c_brand_logo, #c_page_title, #c_page_year, #c_menu_group,
 #c_brand_desc, #c_mood_note, #c_side_note, .c-idx, #c_ghost_year {
   opacity: 0;

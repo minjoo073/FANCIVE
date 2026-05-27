@@ -64,14 +64,14 @@
 
   function overlayNavigate(url) {
     var overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.45s ease';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#1a1816;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.65s cubic-bezier(0.4,0,0.2,1)';
     document.body.appendChild(overlay);
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         overlay.style.opacity = '1';
       });
     });
-    setTimeout(function () { window.location.href = url; }, 460);
+    setTimeout(function () { window.location.href = url; }, 680);
   }
 
   // Navigate to collection page

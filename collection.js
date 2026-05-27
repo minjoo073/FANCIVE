@@ -16,16 +16,27 @@
   window.addEventListener('resize', scaleWrapper);
   scaleWrapper();
 
-  // Entry: body fade + wrapper animations
+  // Entry: fade out dark overlay, trigger image animations simultaneously
   setTimeout(function () {
-    document.body.classList.add('is-visible');
+    var overlay = document.getElementById('c-page-overlay');
+    if (overlay) overlay.classList.add('is-gone');
     var wrapper = document.querySelector('.c-wrapper');
     if (wrapper) wrapper.classList.add('is-ready');
   }, 60);
 
+  // Release animation fill after entry completes so hover JS can control filter/transform
+  setTimeout(function () {
+    var imgs = document.querySelectorAll('#c_hero_main,#c_look01,#c_look02,#c_look03,#c_look04,#c_look05,#c_look06');
+    imgs.forEach(function (img) {
+      img.style.animation = 'none';
+      img.style.filter = 'none';
+      img.style.transform = 'none';
+    });
+  }, 2700);
+
   // Neighbor fade on hover
   var LOOK_IDS = ['c_look01','c_look02','c_look03','c_look04','c_look05','c_look06','c_hero_main'];
-  var SCALE_MAP = { c_look04: 1.015 };
+  var SCALE_MAP = { c_look04: 1.04 };
   var hoveredId = null;
 
   LOOK_IDS.forEach(function(id) {
@@ -39,10 +50,12 @@
         if (!other) return;
         if (otherId === id) {
           other.style.opacity = '1';
-          other.style.transform = 'scale(' + (SCALE_MAP[id] || 1.02) + ')';
+          other.style.filter = 'blur(0px)';
+          other.style.transform = 'scale(' + (SCALE_MAP[id] || 1.04) + ')';
           other.style.zIndex = '20';
         } else {
-          other.style.opacity = '0.12';
+          other.style.opacity = '0.65';
+          other.style.filter = 'blur(2.5px)';
           other.style.transform = '';
           other.style.zIndex = '';
         }
@@ -56,7 +69,8 @@
         var other = document.getElementById(otherId);
         if (!other) return;
         other.style.opacity = '1';
-        other.style.transform = '';
+        other.style.filter = 'none';
+        other.style.transform = 'none';
         other.style.zIndex = '';
       });
     });
