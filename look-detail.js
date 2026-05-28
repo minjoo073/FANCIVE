@@ -73,7 +73,7 @@
     ],
     // look 02
     [
-      { text: 'Grey mesh drifts over a floor-length skirt.\nThe body recedes into layered tone.',            left: 190, bottom: 210 },
+      { text: 'Grey mesh drifts over a floor-length skirt.\nThe body recedes into layered tone.',            left: 190, bottom: 165 },
       { text: 'Presence made quiet, texture made thin—\nsomething worn, something half-remembered.',         left: 32,  bottom: 97  },
     ],
     // look 03
@@ -88,7 +88,7 @@
     ],
     // look 05
     [
-      { text: 'Sheer mesh over slip, tulle at the waist.\nThe look undoes itself deliberately.',             left: 40,  bottom: 250 },
+      { text: 'Sheer mesh over slip, tulle at the waist.\nThe look undoes itself deliberately.',             left: 40,  bottom: 217 },
       { text: 'Transparency layered into depth—\ntenderness worn as resistance.',                            left: 185, bottom: 100 },
     ],
     // look 06
@@ -136,6 +136,7 @@
   var slidesEl   = document.getElementById('ld_slides');
   var lookLabel  = document.getElementById('ld_look_label');
   var descLayer  = document.getElementById('ld_desc_layer');
+  var ghostNum   = document.getElementById('ld_ghost_num');
   var idxItems   = document.querySelectorAll('.ld-idx');
 
   function renderDescs(frags) {
@@ -182,6 +183,19 @@
   // ── UI update ─────────────────────────────────────────
   function updateUI(id) {
     if (lookLabel) lookLabel.textContent = 'LOOK  ' + pad(id);
+    if (ghostNum) {
+      if (!document.body.classList.contains('is-visible')) {
+        ghostNum.textContent = pad(id);
+      } else {
+        ghostNum.style.transition = 'opacity 0.25s ease';
+        ghostNum.style.opacity = '0';
+        setTimeout(function () {
+          ghostNum.textContent = pad(id);
+          ghostNum.style.transition = 'opacity 0.55s ease';
+          ghostNum.style.opacity = '0.02';
+        }, 270);
+      }
+    }
     if (descLayer) {
       if (!document.body.classList.contains('is-visible')) {
         renderDescs(DESCS[id]);
@@ -201,19 +215,41 @@
     });
   }
 
+  // ── Image stagger helpers ─────────────────────────────
+  function revealImages(slide, instant) {
+    var imgs = slide.querySelectorAll('.ld-img');
+    if (instant) {
+      imgs.forEach(function (img) {
+        img.style.transition = 'none';
+        img.style.opacity = '1';
+      });
+    } else {
+      imgs.forEach(function (img) {
+        img.style.transition = 'none';
+        img.style.opacity = '0';
+      });
+      imgs.forEach(function (img, i) {
+        setTimeout(function () {
+          img.style.transition = 'opacity 0.9s ease';
+          img.style.opacity = '1';
+        }, 180 + i * 80);
+      });
+    }
+  }
+
+  function hideImages(slide) {
+    slide.querySelectorAll('.ld-img').forEach(function (img) {
+      img.style.transition = 'opacity 0.5s ease';
+      img.style.opacity = '0';
+    });
+  }
+
   // ── Show look ─────────────────────────────────────────
   function showLook(id, instant) {
     slideEls.forEach(function (s) {
-      var target = parseInt(s.dataset.look, 10) === id;
-      if (instant) {
-        s.style.transition = 'none';
-        s.classList.toggle('is-current', target);
-        // force reflow so transition:none takes effect before re-enabling
-        s.offsetHeight; // eslint-disable-line no-unused-expressions
-        s.style.transition = '';
-      } else {
-        s.classList.toggle('is-current', target);
-      }
+      var isTarget = parseInt(s.dataset.look, 10) === id;
+      s.classList.toggle('is-current', isTarget);
+      if (isTarget) revealImages(s, instant);
     });
     updateUI(id);
   }
@@ -222,24 +258,37 @@
   function switchLook(newId) {
     if (newId === currentId || isSwitching) return;
     isSwitching = true;
+    var oldId = currentId;
     currentId = newId;
-    showLook(currentId, false);
-    setTimeout(function () { isSwitching = false; }, 700);
+
+    slideEls.forEach(function (s) {
+      var sid = parseInt(s.dataset.look, 10);
+      if (sid === oldId) {
+        hideImages(s);
+        setTimeout(function () { s.classList.remove('is-current'); }, 500);
+      } else if (sid === newId) {
+        s.classList.add('is-current');
+        revealImages(s, false);
+      }
+    });
+
+    updateUI(newId);
+    setTimeout(function () { isSwitching = false; }, 1100);
   }
 
   // ── Initialize ────────────────────────────────────────
-  showLook(currentId, true);
+  showLook(currentId, false);
 
   // ── Scroll navigation ─────────────────────────────────
   var scrollTimer = null;
   document.addEventListener('wheel', function (e) {
     if (isSwitching || scrollTimer) return;
-    if (Math.abs(e.deltaY) < 30) return;
+    if (Math.abs(e.deltaY) < 60) return;
     var newId = e.deltaY > 0
       ? (currentId < TOTAL_LOOKS ? currentId + 1 : 1)
       : (currentId > 1 ? currentId - 1 : TOTAL_LOOKS);
     switchLook(newId);
-    scrollTimer = setTimeout(function () { scrollTimer = null; }, 750);
+    scrollTimer = setTimeout(function () { scrollTimer = null; }, 1200);
   }, { passive: true });
 
   // ── Keyboard navigation ───────────────────────────────
@@ -270,8 +319,48 @@
     });
   }
 
+  // ── Nav → about / archive (fade transition) ───────────
+  function bindNavFade(id, href) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.35s ease';
+      document.body.style.opacity = '0';
+      setTimeout(function () { window.location.href = href; }, 360);
+    });
+  }
+  bindNavFade('ld_nav_about',   'about.html');
+  bindNavFade('ld_nav_archive', 'archive.html');
+
   // ── Entry animation ───────────────────────────────────
   setTimeout(function () {
     document.body.classList.add('is-visible');
-  }, 60);
+  }, 220);
+
+  // ── Custom cursor ─────────────────────────────────────
+  var cursor = document.createElement('div');
+  cursor.id = 'ld_cursor';
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', function (e) {
+    cursor.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+    cursor.classList.add('is-active');
+  });
+
+  document.addEventListener('mouseover', function (e) {
+    if (e.target.closest('a, .ld-idx, .ld-img, #ld_nav_menu span')) {
+      cursor.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', function (e) {
+    if (e.target.closest('a, .ld-idx, .ld-img, #ld_nav_menu span')) {
+      cursor.classList.remove('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseleave', function () {
+    cursor.classList.remove('is-active');
+  });
 })();

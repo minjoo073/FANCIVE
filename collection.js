@@ -24,15 +24,15 @@
     if (wrapper) wrapper.classList.add('is-ready');
   }, 60);
 
-  // Release animation fill after entry completes so hover JS can control filter/transform
+  // 애니메이션 종료 후 fill 해제 — opacity:1 명시해야 초기 hidden state 덮어씀
   setTimeout(function () {
     var imgs = document.querySelectorAll('#c_hero_main,#c_look01,#c_look02,#c_look03,#c_look04,#c_look05,#c_look06');
     imgs.forEach(function (img) {
-      img.style.animation = 'none';
-      img.style.filter = 'none';
-      img.style.transform = 'none';
+      img.style.animation  = 'none';
+      img.style.opacity    = '1';
+      img.style.transform  = '';
     });
-  }, 2700);
+  }, 3500);
 
   // Neighbor fade on hover
   var LOOK_IDS = ['c_look01','c_look02','c_look03','c_look04','c_look05','c_look06','c_hero_main'];
@@ -50,14 +50,10 @@
         if (!other) return;
         if (otherId === id) {
           other.style.opacity = '1';
-          other.style.filter = 'blur(0px)';
-          other.style.transform = 'scale(' + (SCALE_MAP[id] || 1.04) + ')';
-          other.style.zIndex = '20';
+          other.style.transform = 'translateY(-5px)';
         } else {
-          other.style.opacity = '0.65';
-          other.style.filter = 'blur(2.5px)';
+          other.style.opacity = '0.45';
           other.style.transform = '';
-          other.style.zIndex = '';
         }
       });
     });
@@ -69,9 +65,7 @@
         var other = document.getElementById(otherId);
         if (!other) return;
         other.style.opacity = '1';
-        other.style.filter = 'none';
-        other.style.transform = 'none';
-        other.style.zIndex = '';
+        other.style.transform = '';
       });
     });
   });
@@ -79,12 +73,12 @@
   // Navigate to look detail page
   function magneticNavigate(url) {
     var overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:#F1F0F0;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.35s ease';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#F1F0F0;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.7s ease';
     document.body.appendChild(overlay);
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { overlay.style.opacity = '1'; });
     });
-    setTimeout(function () { window.location.href = url; }, 370);
+    setTimeout(function () { window.location.href = url; }, 730);
   }
 
   [1, 2, 3, 4, 5, 6].forEach(function (n) {

@@ -72,7 +72,7 @@ body {
   z-index: 9999;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 1.3s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 1.8s cubic-bezier(0.25, 0, 0, 1);
 }
 
 #c-page-overlay.is-gone {
@@ -225,16 +225,16 @@ body {
    INDEX LABELS
 ============================================= */
 .c-idx {
-  font-size: 11px;
-  line-height: 14px;
-  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
   letter-spacing: 0.08em;
-  color: #444444;
+  color: #333333;
   z-index: 15;
 }
 
 #c_idx01 { left: 352px; top: 103px; width: 26px; }
-#c_idx02 { left: 103px; top: 474px; width: 26px; }
+#c_idx02 { left: 35px;  top: 474px; width: 26px; }
 #c_idx03 { left: 306px; top: 856px; width: 26px; }
 #c_idx04 { left: 470px; top: 346px; width: 26px; }
 #c_idx05 { left: 870px; top: 565px; width: 26px; }
@@ -314,33 +314,35 @@ body {
 ============================================= */
 #c_brand_desc {
   left: 412px;
-  top: 125px;
-  width: 526px;
-  font-size: 16px;
-  line-height: 130%;
-  font-weight: 300;
+  top: 95px;
+  width: 520px;
+  font-size: 26px;
+  line-height: 1.38;
+  font-weight: 400;
+  color: #000000;
   z-index: 10;
 }
 
 #c_mood_note {
   left: 412px;
-  top: 166px;
-  width: 371px;
-  font-size: 16px;
-  line-height: 130%;
+  top: 186px;
+  width: 500px;
+  font-size: 18px;
+  line-height: 1.6;
   font-weight: 300;
+  color: #666666;
   z-index: 10;
 }
 
 #c_side_note {
   left: 1018px;
   top: 172px;
-  width: 120px;
-  font-size: 11px;
+  width: 160px;
+  font-size: 15px;
   line-height: 1.7;
   font-weight: 200;
   letter-spacing: 0.08em;
-  color: #aaaaaa;
+  color: #888888;
   z-index: 10;
 }
 
@@ -352,18 +354,13 @@ body {
 #c_look04, #c_look05, #c_look06,
 #c_hero_main {
   cursor: pointer;
-  transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25, 0, 0, 1);
 }
 
 /* =============================================
    PAGE ENTRY ANIMATION
 ============================================= */
-@keyframes c-entry-emerge {
-  from { filter: blur(14px); transform: scale(1.03); }
-  to   { filter: blur(0px);  transform: scale(1);    }
-}
-
-@keyframes c-entry-fade {
+@keyframes c-entry-reveal {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
@@ -373,29 +370,30 @@ body {
   to   { opacity: 0.05; }
 }
 
-.c-wrapper.is-ready #c_hero_main  { animation: c-entry-emerge 1.8s cubic-bezier(0.4,0,0.2,1) 0.10s both; }
-.c-wrapper.is-ready #c_look01     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.15s both; }
-.c-wrapper.is-ready #c_look02     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.28s both; }
-.c-wrapper.is-ready #c_look03     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.42s both; }
-.c-wrapper.is-ready #c_look04     { animation: c-entry-emerge 1.8s cubic-bezier(0.4,0,0.2,1) 0.55s both; }
-.c-wrapper.is-ready #c_look05     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.68s both; }
-.c-wrapper.is-ready #c_look06     { animation: c-entry-emerge 1.6s cubic-bezier(0.4,0,0.2,1) 0.80s both; }
+/* 이미지: 느리고 순차적인 순수 opacity 페이드 */
+.c-wrapper.is-ready #c_hero_main  { animation: c-entry-reveal 2.0s ease 0.30s both; }
+.c-wrapper.is-ready #c_look01     { animation: c-entry-reveal 1.6s ease 0.50s both; }
+.c-wrapper.is-ready #c_look02     { animation: c-entry-reveal 1.6s ease 0.70s both; }
+.c-wrapper.is-ready #c_look03     { animation: c-entry-reveal 1.6s ease 0.90s both; }
+.c-wrapper.is-ready #c_look04     { animation: c-entry-reveal 1.8s ease 1.10s both; }
+.c-wrapper.is-ready #c_look05     { animation: c-entry-reveal 1.6s ease 1.30s both; }
+.c-wrapper.is-ready #c_look06     { animation: c-entry-reveal 1.6s ease 1.50s both; }
+
+/* UI 텍스트: 이미지보다 살짝 늦게 */
 .c-wrapper.is-ready #c_brand_logo,
 .c-wrapper.is-ready #c_page_title,
 .c-wrapper.is-ready #c_page_year,
-.c-wrapper.is-ready #c_menu_group { animation: c-entry-fade 0.8s ease 0.35s both; }
+.c-wrapper.is-ready #c_menu_group { animation: c-entry-reveal 1.2s ease 0.60s both; }
 .c-wrapper.is-ready #c_brand_desc,
 .c-wrapper.is-ready #c_mood_note,
-.c-wrapper.is-ready #c_side_note  { animation: c-entry-fade 0.8s ease 0.50s both; }
-.c-wrapper.is-ready .c-idx        { animation: c-entry-fade 0.7s ease 0.60s both; }
-.c-wrapper.is-ready #c_ghost_year { animation: c-ghost-fade 1.6s ease 0.55s both; }
+.c-wrapper.is-ready #c_side_note  { animation: c-entry-reveal 1.2s ease 0.80s both; }
+.c-wrapper.is-ready .c-idx        { animation: c-entry-reveal 1.0s ease 1.00s both; }
+.c-wrapper.is-ready #c_ghost_year { animation: c-ghost-fade  2.0s ease 0.80s both; }
+.c-wrapper.is-ready #c_center_line { animation: c-entry-reveal 1.4s ease 0.40s both; }
 
-.c-wrapper.is-ready #c_center_line { animation: c-entry-fade 1.0s ease 0.10s both; }
-
-/* initial hidden state — images shown but blurred (overlay covers them); text/UI hidden */
+/* initial hidden state */
 #c_hero_main, #c_look01, #c_look02, #c_look03, #c_look04, #c_look05, #c_look06 {
-  filter: blur(14px);
-  transform: scale(1.03);
+  opacity: 0;
 }
 
 #c_center_line,

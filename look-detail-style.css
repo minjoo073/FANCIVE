@@ -45,7 +45,7 @@ html, body {
 
 body {
   opacity: 0;
-  transition: opacity 0.55s ease;
+  transition: opacity 0.9s ease;
 }
 body.is-visible { opacity: 1; }
 
@@ -86,13 +86,10 @@ body.is-visible { opacity: 1; }
 .ld-slide {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.55s ease;
   pointer-events: none;
 }
 
 .ld-slide.is-current {
-  opacity: 1;
   pointer-events: all;
 }
 
@@ -102,6 +99,7 @@ body.is-visible { opacity: 1; }
 .ld-img {
   position: absolute;
   object-fit: fill;
+  opacity: 0;
 }
 
 /* =============================================
@@ -173,10 +171,10 @@ body.is-visible #ld_desc_layer { opacity: 1; }
 
 .ld-desc-frag {
   position: absolute;
-  width: 440px;
-  font-size: 13px;
+  width: 580px;
+  font-size: 16px;
   line-height: 2;
-  font-weight: 200;
+  font-weight: 400;
   color: #777;
   letter-spacing: 0.06em;
   white-space: pre-line;
@@ -202,11 +200,15 @@ body.is-visible #ld_desc_layer { opacity: 1; }
   transition: opacity 0.4s ease 0.1s;
 }
 body.is-visible #ld_nav_menu { opacity: 1; }
-#ld_nav_menu span {
+#ld_nav_menu span,
+#ld_nav_menu a {
   cursor: pointer;
   transition: opacity 0.4s ease;
+  color: inherit;
+  text-decoration: none;
 }
-#ld_nav_menu span:hover { opacity: 0.45; }
+#ld_nav_menu span:hover,
+#ld_nav_menu a:hover { opacity: 0.45; }
 
 /* =============================================
    LOOK INDEX STRIP (bottom center)
@@ -240,3 +242,56 @@ body.is-visible #ld_look_index { opacity: 1; }
   font-weight: 400;
 }
 .ld-idx:hover:not(.is-current) { color: #666; }
+
+/* =============================================
+   GHOST LOOK NUMBER
+============================================= */
+#ld_ghost_num {
+  position: absolute;
+  left: 30px;
+  top: 848px;
+  font-size: 260px;
+  line-height: 1;
+  font-weight: 200;
+  color: #000000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+  user-select: none;
+  transition: opacity 0.65s ease;
+}
+body.is-visible #ld_ghost_num { opacity: 0.02; }
+
+/* =============================================
+   CUSTOM CURSOR
+============================================= */
+body { cursor: none; }
+
+#ld_cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-radius: 50%;
+  border: 1px solid rgba(30, 30, 30, 0.75);
+  background: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: width 0.25s ease, height 0.25s ease,
+              margin 0.25s ease, opacity 0.2s ease,
+              border-color 0.25s ease;
+  will-change: transform;
+}
+#ld_cursor.is-active { opacity: 1; }
+#ld_cursor.is-hovering {
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border-color: rgba(30, 30, 30, 0.3);
+}

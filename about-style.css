@@ -173,7 +173,7 @@ body.is-visible {
 /* RIGHT — RULE 3 */
 #ab_rule3 {
   left: 1050px;
-  top: 618px;
+  top: 636px;
   width: 30px;
   height: 1px;
   background: #cccccc;
@@ -183,13 +183,13 @@ body.is-visible {
 /* RIGHT — VIDEO LABEL */
 #ab_label3 {
   left: 1050px;
-  top: 600px;
+  top: 618px;
 }
 
 /* RIGHT — BRAND VIDEO (16:9) */
 #ab_video {
   left: 1050px;
-  top: 641px;
+  top: 654px;
   width: 720px;
   height: 405px;
   object-fit: cover;
@@ -284,7 +284,7 @@ body.is-visible {
 
 #ab_label2 {
   left: 1050px;
-  top: 438px;
+  top: 498px;
 }
 
 /* =============================================
@@ -301,7 +301,7 @@ body.is-visible {
 
 #ab_rule2 {
   left: 1050px;
-  top: 456px;
+  top: 516px;
   width: 30px;
   height: 1px;
   background: #cccccc;
@@ -316,7 +316,7 @@ body.is-visible {
   left: 1050px;
   top: 165px;
   width: 560px;
-  font-size: 23px;
+  font-size: 26px;
   line-height: 1.55;
   font-weight: 300;
   letter-spacing: 0.01em;
@@ -325,25 +325,29 @@ body.is-visible {
 
 #ab_body1 {
   left: 1050px;
-  top: 300px;
+  top: 350px;
   width: 560px;
-  font-size: 14px;
-  line-height: 1.7;
-  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.85;
+  font-weight: 200;
+  font-family: 'Switzer', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   color: #222222;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.01em;
+  word-break: keep-all;
   z-index: 10;
 }
 
 #ab_body2 {
   left: 1050px;
-  top: 479px;
+  top: 526px;
   width: 560px;
-  font-size: 13px;
-  line-height: 1.7;
-  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.85;
+  font-weight: 200;
+  font-family: 'Switzer', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   color: #222222;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.01em;
+  word-break: keep-all;
   z-index: 10;
 }
 

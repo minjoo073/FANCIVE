@@ -132,15 +132,15 @@ body.is-visible {
 }
 
 #ar_digit_0 {
-  left: 610px;
+  left: 630px;
   top: 300px;
   font-size: 240px;
   opacity: 0.065;
 }
 
 #ar_digit_2b {
-  left: 720px;
-  top: 430px;
+  left: 730px;
+  top: 433px;
   font-size: 210px;
   opacity: 0.065;
 }
@@ -158,6 +158,63 @@ body.is-visible {
 .ar-obj {
   object-fit: cover;
   object-position: center;
+}
+
+/* =============================================
+   RIGHT — IMAGE SCATTER
+============================================= */
+.ar-right-obj {
+  object-fit: fill;
+}
+
+#ar_right_a {
+  left: 1064px;
+  top: 558px;
+  width: 326px;
+  height: 385px;
+  z-index: 6;
+  transform: rotate(-10deg);
+  transform-origin: center center;
+}
+
+#ar_right_b {
+  left: 1310px;
+  top: 465px;
+  width: 239px;
+  height: 299px;
+  z-index: 7;
+  transform: rotate(4deg);
+  transform-origin: center center;
+}
+
+#ar_right_c {
+  left: 1305px;
+  top: 727px;
+  width: 205px;
+  height: 247px;
+  z-index: 6;
+  transform: rotate(-3deg);
+  transform-origin: center center;
+}
+
+#ar_right_d {
+  left: 1480px;
+  top: 614px;
+  width: 148px;
+  height: 178px;
+  z-index: 8;
+  transform: rotate(6deg);
+  transform-origin: center center;
+}
+
+#ar_right_e {
+  left: 1455px;
+  top: 749px;
+  width: 258px;
+  height: 154px;
+  z-index: 9;
+  transform: rotate(2deg);
+  transform-origin: center center;
 }
 
 #ar_obj1 {
@@ -266,8 +323,8 @@ body.is-visible {
    RIGHT PANEL — INDEX LABEL
 ============================================= */
 #ar_index_label {
-  left: 1160px;
-  top: 125px;
+  left: 1100px;
+  top: 82px;
   z-index: 10;
 }
 
@@ -275,16 +332,16 @@ body.is-visible {
    RIGHT PANEL — COLOPHON
 ============================================= */
 #ar_colophon_rule {
-  left: 1160px;
+  left: 1100px;
   top: 1020px;
-  width: 600px;
+  width: 480px;
   height: 1px;
   background: rgba(153, 153, 153, 0.25);
   z-index: 10;
 }
 
 #ar_colophon {
-  left: 1160px;
+  left: 1100px;
   top: 1034px;
   font-size: 11px;
   line-height: 14px;
@@ -295,26 +352,102 @@ body.is-visible {
 }
 
 /* =============================================
-   RIGHT PANEL — SEASON LIST
+   RIGHT PANEL — SEASON LIST (DRUM)
 ============================================= */
 #ar_season_list {
-  left: 1160px;
-  top: 155px;
-  width: 600px;
+  left: 1100px;
+  top: 112px;
+  width: 480px;
+  height: 292px;
   z-index: 10;
+  perspective: 700px;
+  perspective-origin: 50% 50%;
 }
 
-.ar-rule {
-  width: 100%;
+.ar-drum-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  transform-origin: 50% 50%;
+}
+
+.ar-drum-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 1px;
   background: rgba(153, 153, 153, 0.25);
 }
 
-.ar-season {
-  display: flex;
-  align-items: center;
-  height: 96px;
-  padding: 0 4px;
+.ar-drum-end-rule {
+  position: absolute;
+  top: 288px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(153, 153, 153, 0.25);
+}
+
+/* pos -2 : 가장 위, 가장 흐림 */
+.ar-drum-far-top {
+  top: 0;
+  transform: rotateX(22deg);
+  opacity: 0.18;
+  color: #aaaaaa;
+}
+
+/* pos -1 : 위 */
+.ar-drum-near-top {
+  top: 72px;
+  transform: rotateX(11deg);
+  opacity: 0.45;
+  color: #888888;
+}
+
+/* pos 0 : 중앙 / 현재 시즌 */
+.ar-drum-center {
+  top: 144px;
+  transform: rotateX(0deg);
+  opacity: 1;
+  color: #000000;
+  cursor: pointer;
+}
+
+.ar-drum-center:hover .ar-season-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ar-drum-center:hover .ar-season-name {
+  opacity: 0.5;
+}
+
+/* pos +1 : 아래 */
+.ar-drum-near-bottom {
+  top: 216px;
+  transform: rotateX(-11deg);
+  opacity: 0.45;
+  color: #888888;
+}
+
+/* 상하 그라디언트 페이드 — 오목한 느낌 */
+.ar-drum-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #F1F0F0 0%,
+    rgba(241, 240, 240, 0) 30%,
+    rgba(241, 240, 240, 0) 70%,
+    #F1F0F0 100%
+  );
+  pointer-events: none;
+  z-index: 5;
 }
 
 .ar-season-no {
@@ -351,48 +484,6 @@ body.is-visible {
   transform: translateX(-6px);
 }
 
-/* Active season */
-.ar-season--active {
-  cursor: pointer;
-}
-
-.ar-season--active .ar-season-no,
-.ar-season--active .ar-season-name,
-.ar-season--active .ar-season-status {
-  color: #000000;
-}
-
-.ar-season--active:hover .ar-season-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.ar-season--active:hover .ar-season-name {
-  opacity: 0.5;
-}
-
-/* Dim season (forthcoming) */
-.ar-season--dim .ar-season-no,
-.ar-season--dim .ar-season-name,
-.ar-season--dim .ar-season-status {
-  color: #bbbbbb;
-}
-
-.ar-season--dim {
-  cursor: default;
-}
-
-/* Muted season */
-.ar-season--muted .ar-season-no,
-.ar-season--muted .ar-season-name,
-.ar-season--muted .ar-season-status {
-  color: #cccccc;
-}
-
-.ar-season--muted {
-  cursor: default;
-}
-
 /* =============================================
    PAGE ENTRY ANIMATION
 ============================================= */
@@ -414,6 +505,12 @@ body.is-visible {
 .ar-wrapper.is-ready #ar_obj1           { animation: ar-entry-fade 0.5s ease 0.06s both; }
 .ar-wrapper.is-ready #ar_obj2           { animation: ar-entry-fade 0.5s ease 0.12s both; }
 
+.ar-wrapper.is-ready #ar_right_a        { animation: ar-entry-fade 0.5s ease 0.10s both; }
+.ar-wrapper.is-ready #ar_right_b        { animation: ar-entry-fade 0.5s ease 0.14s both; }
+.ar-wrapper.is-ready #ar_right_c        { animation: ar-entry-fade 0.5s ease 0.18s both; }
+.ar-wrapper.is-ready #ar_right_d        { animation: ar-entry-fade 0.5s ease 0.20s both; }
+.ar-wrapper.is-ready #ar_right_e        { animation: ar-entry-fade 0.5s ease 0.22s both; }
+
 .ar-wrapper.is-ready #ar_seasons_label  { animation: ar-entry-fade 0.4s ease 0.15s both; }
 
 .ar-wrapper.is-ready #ar_brand_logo,
@@ -430,6 +527,7 @@ body.is-visible {
 /* initial hidden state */
 #ar_digit_2a, #ar_digit_0, #ar_digit_2b, #ar_digit_6,
 #ar_obj1, #ar_obj2,
+#ar_right_a, #ar_right_b, #ar_right_c, #ar_right_d, #ar_right_e,
 #ar_seasons_label,
 #ar_brand_logo, #ar_page_title, #ar_page_year, #ar_menu_group,
 #ar_index_label, #ar_season_list,
