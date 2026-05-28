@@ -115,9 +115,7 @@ body.is-visible { opacity: 1; }
   height: 47px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
   z-index: 100;
 }
 
@@ -161,13 +159,67 @@ body.is-visible #ld_logo:hover { opacity: 0.4; transition: opacity 0.3s ease; }
 body.is-visible #ld_look_label { opacity: 1; }
 
 /* =============================================
-   LOOK INDEX STRIP (right)
+   LOOK DESCRIPTION (bottom left)
+============================================= */
+#ld_desc_layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.45s ease 0.2s;
+}
+body.is-visible #ld_desc_layer { opacity: 1; }
+
+.ld-desc-frag {
+  position: absolute;
+  width: 440px;
+  font-size: 13px;
+  line-height: 2;
+  font-weight: 200;
+  color: #777;
+  letter-spacing: 0.06em;
+  white-space: pre-line;
+}
+
+/* =============================================
+   RIGHT NAV MENU (top right, vertical)
+============================================= */
+#ld_nav_menu {
+  position: absolute;
+  left: 1737px;
+  top: 14px;
+  width: 63px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 200;
+  color: #555555;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+body.is-visible #ld_nav_menu { opacity: 1; }
+#ld_nav_menu span {
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+#ld_nav_menu span:hover { opacity: 0.45; }
+
+/* =============================================
+   LOOK INDEX STRIP (bottom center)
 ============================================= */
 #ld_look_index {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 22px;
   align-items: center;
-  flex-shrink: 0;
+  z-index: 100;
   opacity: 0;
   transition: opacity 0.4s ease 0.1s;
 }

@@ -11,56 +11,95 @@
       { p: 'a', x: 31,   y: 47,  w: 468, h: 644 },
       { p: 'b', x: 469,  y: 47,  w: 470, h: 716 },
       { p: 'c', x: 960,  y: 47,  w: 462, h: 840 },
-      { p: 'd', x: 1437, y: 47,  w: 455, h: 329 },
-      { p: 'e', x: 1437, y: 391, w: 455, h: 347 },
+      { p: 'd', x: 1437, y: 100, w: 455, h: 329 },
+      { p: 'e', x: 1437, y: 444, w: 455, h: 347 },
     ],
     // look 02
     [
       { p: 'a', x: 32,   y: 47,  w: 558, h: 774 },
       { p: 'b', x: 548,  y: 47,  w: 376, h: 542 },
       { p: 'c', x: 968,  y: 47,  w: 452, h: 785 },
-      { p: 'd', x: 1437, y: 47,  w: 453, h: 330 },
-      { p: 'e', x: 1437, y: 390, w: 453, h: 347 },
+      { p: 'd', x: 1437, y: 100, w: 453, h: 330 },
+      { p: 'e', x: 1437, y: 443, w: 453, h: 347 },
     ],
     // look 03
     [
       { p: 'a', x: 31,   y: 47,  w: 567, h: 676 },
       { p: 'b', x: 501,  y: 47,  w: 421, h: 556 },
       { p: 'c', x: 968,  y: 47,  w: 453, h: 868 },
-      { p: 'd', x: 1436, y: 47,  w: 455, h: 329 },
-      { p: 'e', x: 1436, y: 391, w: 454, h: 346 },
+      { p: 'd', x: 1436, y: 100, w: 455, h: 329 },
+      { p: 'e', x: 1436, y: 444, w: 454, h: 346 },
     ],
     // look 04
     [
       { p: 'a', x: 30,   y: 47,  w: 566, h: 615 },
       { p: 'b', x: 572,  y: 47,  w: 339, h: 691 },
       { p: 'c', x: 968,  y: 47,  w: 453, h: 875 },
-      { p: 'd', x: 1436, y: 47,  w: 456, h: 328 },
-      { p: 'e', x: 1436, y: 391, w: 456, h: 348 },
+      { p: 'd', x: 1436, y: 100, w: 456, h: 328 },
+      { p: 'e', x: 1436, y: 444, w: 456, h: 348 },
     ],
     // look 05
     [
       { p: 'a', x: 31,   y: 47,  w: 528, h: 727 },
       { p: 'b', x: 508,  y: 47,  w: 416, h: 556 },
       { p: 'c', x: 968,  y: 47,  w: 454, h: 796 },
-      { p: 'd', x: 1436, y: 47,  w: 454, h: 330 },
-      { p: 'e', x: 1436, y: 387, w: 457, h: 487 },
+      { p: 'd', x: 1436, y: 100, w: 454, h: 330 },
+      { p: 'e', x: 1436, y: 440, w: 457, h: 487 },
     ],
     // look 06
     [
       { p: 'a', x: 31,   y: 47,  w: 610, h: 600 },
       { p: 'b', x: 499,  y: 47,  w: 415, h: 709 },
       { p: 'c', x: 969,  y: 47,  w: 451, h: 869 },
-      { p: 'd', x: 1436, y: 47,  w: 456, h: 329 },
-      { p: 'e', x: 1436, y: 390, w: 456, h: 440 },
+      { p: 'd', x: 1436, y: 100, w: 456, h: 329 },
+      { p: 'e', x: 1436, y: 443, w: 456, h: 440 },
     ],
     // look 07
     [
       { p: 'a', x: 31,   y: 47,  w: 527, h: 657 },
       { p: 'b', x: 555,  y: 47,  w: 368, h: 570 },
       { p: 'c', x: 969,  y: 47,  w: 454, h: 800 },
-      { p: 'd', x: 1437, y: 47,  w: 456, h: 331 },
-      { p: 'e', x: 1437, y: 391, w: 456, h: 396 },
+      { p: 'd', x: 1437, y: 100, w: 456, h: 331 },
+      { p: 'e', x: 1437, y: 444, w: 456, h: 396 },
+    ],
+  ];
+
+  var DESCS = [
+    null,
+    // look 01
+    [
+      { text: 'Washed grey cardigan,\nwhite slip beneath.',                                                  left: 31,  bottom: 255 },
+      { text: 'Softness structured through layering—\nfaded intimacy, held without grip.',                   left: 175, bottom: 98  },
+    ],
+    // look 02
+    [
+      { text: 'Grey mesh drifts over a floor-length skirt.\nThe body recedes into layered tone.',            left: 190, bottom: 210 },
+      { text: 'Presence made quiet, texture made thin—\nsomething worn, something half-remembered.',         left: 32,  bottom: 97  },
+    ],
+    // look 03
+    [
+      { text: 'Pale boucle cropped against a soft skirt,\nthe silhouette caught between stillness and fall.',left: 22,  bottom: 295 },
+      { text: 'White absorbs the cold without resistance.\nA shape that lingers after leaving.',             left: 170, bottom: 100 },
+    ],
+    // look 04
+    [
+      { text: 'Lace unravels at the hem of black.\nSharp heel, scattered thread—',                          left: 65,  bottom: 275 },
+      { text: 'tension held between weight and dissolution.\nDark restraint frayed at its own edge.',        left: 22,  bottom: 97  },
+    ],
+    // look 05
+    [
+      { text: 'Sheer mesh over slip, tulle at the waist.\nThe look undoes itself deliberately.',             left: 40,  bottom: 250 },
+      { text: 'Transparency layered into depth—\ntenderness worn as resistance.',                            left: 185, bottom: 100 },
+    ],
+    // look 06
+    [
+      { text: 'Hood drawn close, the body turns away.\nAn oversized silhouette swallowed in black.',        left: 18,  bottom: 265 },
+      { text: 'No gesture offered, no surface given.\nWithdrawal as its own quiet form.',                    left: 165, bottom: 97  },
+    ],
+    // look 07
+    [
+      { text: 'Ivory lace gathers at the floor.\nA cardigan dropped over without urgency.',                 left: 185, bottom: 310 },
+      { text: 'The whole thing reads like something kept—\nnot quite letting go.',                           left: 28,  bottom: 99  },
     ],
   ];
 
@@ -94,9 +133,23 @@
   var isSwitching = false;
 
   // ── DOM refs ──────────────────────────────────────────
-  var slidesEl  = document.getElementById('ld_slides');
-  var lookLabel = document.getElementById('ld_look_label');
-  var idxItems  = document.querySelectorAll('.ld-idx');
+  var slidesEl   = document.getElementById('ld_slides');
+  var lookLabel  = document.getElementById('ld_look_label');
+  var descLayer  = document.getElementById('ld_desc_layer');
+  var idxItems   = document.querySelectorAll('.ld-idx');
+
+  function renderDescs(frags) {
+    descLayer.innerHTML = '';
+    if (!frags) return;
+    frags.forEach(function (f) {
+      var div = document.createElement('div');
+      div.className = 'ld-desc-frag';
+      div.textContent = f.text;
+      div.style.left   = f.left   + 'px';
+      div.style.bottom = f.bottom + 'px';
+      descLayer.appendChild(div);
+    });
+  }
 
   // ── Build look slides ─────────────────────────────────
   var slideEls = [];
@@ -129,6 +182,18 @@
   // ── UI update ─────────────────────────────────────────
   function updateUI(id) {
     if (lookLabel) lookLabel.textContent = 'LOOK  ' + pad(id);
+    if (descLayer) {
+      if (!document.body.classList.contains('is-visible')) {
+        renderDescs(DESCS[id]);
+      } else {
+        descLayer.style.transition = 'opacity 0.2s ease';
+        descLayer.style.opacity = '0';
+        setTimeout(function () {
+          renderDescs(DESCS[id]);
+          descLayer.style.opacity = '1';
+        }, 200);
+      }
+    }
     document.title = 'FANCIVE — LOOK ' + pad(id);
     history.replaceState(null, '', '#' + id);
     idxItems.forEach(function (el) {
