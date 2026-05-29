@@ -439,20 +439,17 @@ html.skip-intro .intro-screen {
 }
 
 .intro-wordmark {
-  position: relative;
-  z-index: 1;
-  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
-  font-weight: 200;
-  font-size: clamp(28px, 4vw, 52px);
-  letter-spacing: 0.55em;
-  color: #e8e4dc;
-  text-indent: 0.55em;
+  position: absolute;
+  bottom: 9vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: clamp(260px, 34vw, 520px);
+  height: auto;
   opacity: 0;
   filter: blur(6px);
   transition: opacity 2.0s ease,
               filter  2.0s ease;
-  align-self: flex-end;
-  padding-bottom: 9vh;
 }
 
 .intro-wordmark.is-revealing {
