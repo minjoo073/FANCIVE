@@ -446,6 +446,14 @@ body.is-visible {
   opacity: 0.5;
 }
 
+.ar-drum-near-top,
+.ar-drum-near-bottom {
+  cursor: pointer;
+}
+
+.ar-drum-near-top:hover  { opacity: 0.7; }
+.ar-drum-near-bottom:hover { opacity: 0.7; }
+
 /* pos +1 : 아래 */
 .ar-drum-near-bottom {
   top: 216px;

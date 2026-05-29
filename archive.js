@@ -50,11 +50,77 @@
     });
   }
 
-  // Active season → collection
-  var season01 = document.getElementById('ar_season01');
-  if (season01) {
-    season01.addEventListener('click', function () {
-      fadeNavigate('collection.html');
+  // ── Drum interaction ─────────────────────────────────
+  var SEASONS = [
+    { no: '04', name: 'A/W 2024', status: '—',           url: null },
+    { no: '03', name: 'S/S 2025', status: '—',           url: null },
+    { no: '01', name: 'S/S 2026', status: '7 LOOKS',     url: 'collection.html' },
+    { no: '02', name: 'A/W 2025', status: 'FORTHCOMING', url: null },
+  ];
+  var N = SEASONS.length;
+  var centerIdx = 2; // S/S 2026
+  var isRotating = false;
+
+  var drumItems = document.querySelectorAll('.ar-drum-item');
+  // [0]=far-top  [1]=near-top  [2]=center  [3]=near-bottom
+  var OFFSETS = [-2, -1, 0, 1];
+
+  function getSeason(offset) {
+    return SEASONS[(centerIdx + offset + N * 10) % N];
+  }
+
+  function renderDrum() {
+    drumItems.forEach(function (el, i) {
+      var s = getSeason(OFFSETS[i]);
+      var isCenter = (i === 2);
+      el.querySelector('.ar-season-no').textContent   = s.no;
+      el.querySelector('.ar-season-name').textContent = s.name;
+      el.querySelector('.ar-season-status').textContent = s.status;
+      var arrow = el.querySelector('.ar-season-arrow');
+      if (arrow) arrow.style.display = (isCenter && s.url) ? '' : 'none';
     });
   }
+
+  function rotateDrum(delta) {
+    if (isRotating) return;
+    isRotating = true;
+    centerIdx = (centerIdx + delta + N) % N;
+
+    drumItems.forEach(function (el) {
+      el.style.transition = 'opacity 0.18s ease';
+      el.style.opacity    = '0';
+    });
+
+    setTimeout(function () {
+      renderDrum();
+      drumItems.forEach(function (el) {
+        el.style.transition = 'opacity 0.28s ease';
+        el.style.opacity    = '';
+      });
+      setTimeout(function () { isRotating = false; }, 320);
+    }, 200);
+  }
+
+  renderDrum();
+
+  // Near-top click → rotate up
+  if (drumItems[1]) drumItems[1].addEventListener('click', function () { rotateDrum(-1); });
+  // Near-bottom click → rotate down
+  if (drumItems[3]) drumItems[3].addEventListener('click', function () { rotateDrum(1); });
+  // Center click → navigate
+  if (drumItems[2]) {
+    drumItems[2].addEventListener('click', function () {
+      var s = getSeason(0);
+      if (s.url) fadeNavigate(s.url);
+    });
+  }
+
+  // Wheel scroll anywhere on page
+  var wheelCooldown = null;
+  document.addEventListener('wheel', function (e) {
+    if (isRotating || wheelCooldown) return;
+    if (Math.abs(e.deltaY) < 40) return;
+    rotateDrum(e.deltaY > 0 ? 1 : -1);
+    wheelCooldown = setTimeout(function () { wheelCooldown = null; }, 600);
+  }, { passive: true });
 })();
