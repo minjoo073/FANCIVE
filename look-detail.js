@@ -133,11 +133,14 @@
   var isSwitching = false;
 
   // ── DOM refs ──────────────────────────────────────────
-  var slidesEl   = document.getElementById('ld_slides');
-  var lookLabel  = document.getElementById('ld_look_label');
-  var descLayer  = document.getElementById('ld_desc_layer');
-  var ghostNum   = document.getElementById('ld_ghost_num');
-  var idxItems   = document.querySelectorAll('.ld-idx');
+  var slidesEl    = document.getElementById('ld_slides');
+  var lookLabel   = document.getElementById('ld_look_label');
+  var lookNum     = document.getElementById('ld_look_num');
+  var descLayer   = document.getElementById('ld_desc_layer');
+  var ghostNum    = document.getElementById('ld_ghost_num');
+  var idxCurrent  = document.getElementById('ld_idx_current');
+  var idxFill     = document.getElementById('ld_idx_fill');
+  var idxTrack    = document.getElementById('ld_idx_track');
 
   function renderDescs(frags) {
     descLayer.innerHTML = '';
@@ -182,7 +185,7 @@
 
   // ── UI update ─────────────────────────────────────────
   function updateUI(id) {
-    if (lookLabel) lookLabel.textContent = 'LOOK  ' + pad(id);
+    if (lookNum) lookNum.textContent = 'LOOK ' + pad(id);
     if (ghostNum) {
       if (!document.body.classList.contains('is-visible')) {
         ghostNum.textContent = pad(id);
@@ -210,9 +213,8 @@
     }
     document.title = 'FANCIVE — LOOK ' + pad(id);
     history.replaceState(null, '', '#' + id);
-    idxItems.forEach(function (el) {
-      el.classList.toggle('is-current', parseInt(el.dataset.look, 10) === id);
-    });
+    if (idxCurrent) idxCurrent.textContent = pad(id);
+    if (idxFill) idxFill.style.width = (id / TOTAL_LOOKS * 100) + '%';
   }
 
   // ── Image stagger helpers ─────────────────────────────
@@ -301,12 +303,15 @@
     }
   });
 
-  // ── Look index click ──────────────────────────────────
-  idxItems.forEach(function (el) {
-    el.addEventListener('click', function () {
-      switchLook(parseInt(el.dataset.look, 10));
+  // ── Track click ───────────────────────────────────────
+  if (idxTrack) {
+    idxTrack.addEventListener('click', function (e) {
+      var rect = idxTrack.getBoundingClientRect();
+      var ratio = (e.clientX - rect.left) / rect.width;
+      var newId = Math.max(1, Math.min(TOTAL_LOOKS, Math.ceil(ratio * TOTAL_LOOKS)));
+      switchLook(newId);
     });
-  });
+  }
 
   // ── Logo → collection (fade transition) ───────────────
   var logo = document.getElementById('ld_logo');

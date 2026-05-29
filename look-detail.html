@@ -21,29 +21,32 @@
         <a id="ld_logo" href="collection.html">
           <img src="assets/images/left_logo.png" alt="FANCIVE">
         </a>
-        <div id="ld_look_label"></div>
+        <div id="ld_look_label">
+          <span id="ld_look_num"></span><span id="ld_look_sep"> · </span><span id="ld_look_season">SS 2026</span>
+        </div>
       </header>
 
       <!-- RIGHT NAV MENU -->
       <nav id="ld_nav_menu">
-        <a id="ld_nav_about" href="about.html">ABOUT</a>
-        <a id="ld_nav_archive" href="archive.html">ARCHIVE</a>
-        <span>CONTACT</span>
+        <div class="menu-burger"><i></i><i></i><i></i></div>
+        <div class="menu-items">
+          <a id="ld_nav_about" href="about.html">ABOUT</a>
+          <a id="ld_nav_archive" href="archive.html">ARCHIVE</a>
+          <span>CONTACT</span>
+        </div>
       </nav>
 
       <!-- LOOK DESCRIPTION (bottom left) -->
       <div id="ld_desc_layer"></div>
 
       <!-- LOOK INDEX (bottom) -->
-      <nav id="ld_look_index">
-        <span class="ld-idx" data-look="1">01</span>
-        <span class="ld-idx" data-look="2">02</span>
-        <span class="ld-idx" data-look="3">03</span>
-        <span class="ld-idx" data-look="4">04</span>
-        <span class="ld-idx" data-look="5">05</span>
-        <span class="ld-idx" data-look="6">06</span>
-        <span class="ld-idx" data-look="7">07</span>
-      </nav>
+      <div id="ld_look_index">
+        <span id="ld_idx_current">01</span>
+        <div id="ld_idx_track">
+          <div id="ld_idx_fill"></div>
+        </div>
+        <span id="ld_idx_total">07</span>
+      </div>
 
     </div>
   </div>

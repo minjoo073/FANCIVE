@@ -9,25 +9,22 @@
 img { display: block; border: none; }
 
 /* =============================================
-   FONT FACE — Switzer
+   FONT FACE
 ============================================= */
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Extralight.woff') format('woff');
-  font-weight: 200; font-style: normal; font-display: swap;
+  font-family: 'CabinetGrotesk';
+  src: url('assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Light.woff') format('woff');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Regular.woff') format('woff');
-  font-weight: 400; font-style: normal; font-display: swap;
+  font-family: 'SUIT';
+  src: url('assets/fonts/SUIT-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =============================================
@@ -38,7 +35,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: #1a1816;
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -113,7 +110,8 @@ body.is-visible { opacity: 1; }
   height: 47px;
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  justify-content: space-between;
+  padding: 0 240px 0 40px;
   z-index: 100;
 }
 
@@ -123,14 +121,14 @@ body.is-visible { opacity: 1; }
 #ld_logo {
   display: block;
   text-decoration: none;
-  height: 22px;
+  height: 30px;
   flex-shrink: 0;
   opacity: 0;
   transition: opacity 0.4s ease;
   cursor: pointer;
 }
 #ld_logo img {
-  height: 22px;
+  height: 30px;
   width: auto;
   object-fit: contain;
   object-position: left center;
@@ -139,22 +137,39 @@ body.is-visible #ld_logo       { opacity: 1; }
 body.is-visible #ld_logo:hover { opacity: 0.4; transition: opacity 0.3s ease; }
 
 /* =============================================
-   LOOK LABEL (center)
+   LOOK LABEL (right)
 ============================================= */
 #ld_look_label {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 300;
-  color: #333;
-  letter-spacing: 0.30em;
+  display: flex;
+  align-items: center;
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.4s ease 0.15s;
 }
 body.is-visible #ld_look_label { opacity: 1; }
+
+#ld_look_num {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 0.20em;
+}
+
+#ld_look_sep {
+  font-size: 12px;
+  font-weight: 200;
+  color: #cccccc;
+  margin: 0 8px;
+}
+
+#ld_look_season {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 200;
+  color: #aaaaaa;
+  letter-spacing: 0.15em;
+}
 
 /* =============================================
    LOOK DESCRIPTION (bottom left)
@@ -172,11 +187,11 @@ body.is-visible #ld_desc_layer { opacity: 1; }
 .ld-desc-frag {
   position: absolute;
   width: 580px;
-  font-size: 16px;
-  line-height: 2;
-  font-weight: 400;
-  color: #777;
-  letter-spacing: 0.06em;
+  font-size: 17px;
+  line-height: 1.85;
+  font-weight: 300;
+  color: #666;
+  letter-spacing: 0.04em;
   white-space: pre-line;
 }
 
@@ -190,16 +205,55 @@ body.is-visible #ld_desc_layer { opacity: 1; }
   width: 63px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 20px;
   font-weight: 200;
+  letter-spacing: 0.04em;
   color: #555555;
   z-index: 100;
   opacity: 0;
   transition: opacity 0.4s ease 0.1s;
 }
 body.is-visible #ld_nav_menu { opacity: 1; }
+
+.menu-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+
+.menu-burger i {
+  display: block;
+  width: 26px;
+  height: 1.5px;
+  background: currentColor;
+  font-style: normal;
+  transition: opacity 0.3s ease;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: 0;
+  transition: max-height 0.45s ease, opacity 0.35s ease 0.06s, margin-top 0.45s ease;
+}
+
+#ld_nav_menu:hover .menu-burger i { opacity: 0.45; }
+
+#ld_nav_menu:hover .menu-items {
+  max-height: 120px;
+  opacity: 1;
+  pointer-events: all;
+  margin-top: 14px;
+}
+
 #ld_nav_menu span,
 #ld_nav_menu a {
   cursor: pointer;
@@ -219,29 +273,51 @@ body.is-visible #ld_nav_menu { opacity: 1; }
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 22px;
   align-items: center;
+  gap: 18px;
   z-index: 100;
   opacity: 0;
   transition: opacity 0.4s ease 0.1s;
 }
 body.is-visible #ld_look_index { opacity: 1; }
 
-.ld-idx {
+#ld_idx_current {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 400;
+  color: #111;
+  letter-spacing: 0.10em;
+  min-width: 18px;
+  text-align: right;
+  user-select: none;
+}
+
+#ld_idx_total {
   font-size: 11px;
   line-height: 1;
   font-weight: 200;
-  color: #c0c0c0;
-  cursor: pointer;
-  letter-spacing: 0.08em;
-  transition: color 0.3s ease;
+  color: #b8b8b8;
+  letter-spacing: 0.10em;
+  min-width: 18px;
   user-select: none;
 }
-.ld-idx.is-current {
-  color: #111;
-  font-weight: 400;
+
+#ld_idx_track {
+  position: relative;
+  width: 420px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  cursor: pointer;
 }
-.ld-idx:hover:not(.is-current) { color: #666; }
+
+#ld_idx_fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.55);
+  transition: width 0.55s cubic-bezier(0.25, 0, 0, 1);
+}
 
 /* =============================================
    GHOST LOOK NUMBER

@@ -21,17 +21,27 @@
   var introHero    = document.getElementById('introHeroImg');
   var introWordmark = document.getElementById('introWordmark');
 
-  // ── Skip intro if already seen this session ───────────
-  if (sessionStorage.getItem('introSeen')) {
-    // Remove intro immediately, show spread without delay
+  // ── Skip intro if already seen ────────────────────────
+  if (localStorage.getItem('introSeen')) {
+    // Remove intro immediately, show everything at once
     if (introScreen && introScreen.parentNode) {
       introScreen.parentNode.removeChild(introScreen);
     }
-    spread.classList.add('reveal-active');
+    document.querySelectorAll('.left-paper, .right-paper').forEach(function (p) {
+      p.style.opacity = '1';
+    });
+    document.querySelectorAll('.el').forEach(function (el) {
+      el.style.opacity = '1';
+      el.style.filter = 'none';
+      el.style.animation = 'none';
+      el.style.transform = '';
+    });
+    var ribbon = document.getElementById('right_ribbon_image');
+    if (ribbon) { ribbon.style.animation = 'drift-ribbon 7s ease-in-out infinite'; }
     spread.classList.add('reveal-done');
   } else {
     // First visit — run full intro sequence
-    sessionStorage.setItem('introSeen', '1');
+    localStorage.setItem('introSeen', '1');
 
     // t=100ms  — hero starts blur-to-focus (3.0s transition)
     setTimeout(function () {

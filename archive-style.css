@@ -13,40 +13,20 @@ img {
 }
 
 /* =============================================
-   FONT FACE — Switzer
+   FONT FACE
 ============================================= */
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Extralight.woff') format('woff');
-  font-weight: 200;
+  font-family: 'CabinetGrotesk';
+  src: url('assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Medium.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Medium.woff') format('woff');
-  font-weight: 500;
+  font-family: 'SUIT';
+  src: url('assets/fonts/SUIT-Variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -60,7 +40,7 @@ body {
   height: 100%;
   overflow: hidden;
   background: #1a1816;
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -105,7 +85,7 @@ body.is-visible {
 }
 
 .ar-text {
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   color: #000000;
   letter-spacing: 0;
 }
@@ -255,9 +235,9 @@ body.is-visible {
 ============================================= */
 #ar_brand_logo {
   left: 81px;
-  top: 17px;
-  width: 90px;
-  height: 28px;
+  top: 6px;
+  width: 120px;
+  height: 36px;
   text-decoration: none;
   cursor: pointer;
   z-index: 20;
@@ -278,11 +258,12 @@ body.is-visible {
 
 #ar_page_title {
   left: 765px;
-  top: 15px;
-  width: 130px;
-  font-size: 24px;
+  top: 11px;
+  width: 180px;
+  font-size: 26px;
   line-height: 30px;
   font-weight: 400;
+  letter-spacing: 0.08em;
   z-index: 20;
 }
 
@@ -290,8 +271,8 @@ body.is-visible {
   left: 1035px;
   top: 16px;
   width: 51px;
-  font-size: 22px;
-  line-height: 29px;
+  font-size: 20px;
+  line-height: 26px;
   font-weight: 200;
   z-index: 20;
 }
@@ -302,12 +283,50 @@ body.is-visible {
   width: 80px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 20px;
   font-weight: 200;
+  letter-spacing: 0.04em;
   color: #555555;
   z-index: 20;
+}
+
+.menu-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 3px 0;
+}
+
+.menu-burger i {
+  display: block;
+  width: 26px;
+  height: 1.5px;
+  background: currentColor;
+  font-style: normal;
+  transition: opacity 0.3s ease;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: 0;
+  transition: max-height 0.45s ease, opacity 0.35s ease 0.06s, margin-top 0.45s ease;
+}
+
+#ar_menu_group:hover .menu-burger i { opacity: 0.45; }
+
+#ar_menu_group:hover .menu-items {
+  max-height: 120px;
+  opacity: 1;
+  pointer-events: all;
+  margin-top: 14px;
 }
 
 #ar_menu_group span {
@@ -453,8 +472,8 @@ body.is-visible {
 .ar-season-no {
   font-size: 11px;
   line-height: 14px;
-  font-weight: 200;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.10em;
   width: 36px;
   flex-shrink: 0;
 }
@@ -472,7 +491,7 @@ body.is-visible {
   font-size: 13px;
   line-height: 17px;
   font-weight: 200;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   flex: 1;
 }
 
@@ -497,6 +516,27 @@ body.is-visible {
   to   { opacity: 0.065; }
 }
 
+@keyframes ar-gather-a {
+  from { opacity: 0; transform: rotate(-10deg) translate(-130px, 80px) scale(0.78); }
+  to   { opacity: 1; transform: rotate(-10deg) translate(0, 0) scale(1); }
+}
+@keyframes ar-gather-b {
+  from { opacity: 0; transform: rotate(4deg) translate(70px, -120px) scale(0.80); }
+  to   { opacity: 1; transform: rotate(4deg) translate(0, 0) scale(1); }
+}
+@keyframes ar-gather-c {
+  from { opacity: 0; transform: rotate(-3deg) translate(-60px, 130px) scale(0.78); }
+  to   { opacity: 1; transform: rotate(-3deg) translate(0, 0) scale(1); }
+}
+@keyframes ar-gather-d {
+  from { opacity: 0; transform: rotate(6deg) translate(120px, -60px) scale(0.82); }
+  to   { opacity: 1; transform: rotate(6deg) translate(0, 0) scale(1); }
+}
+@keyframes ar-gather-e {
+  from { opacity: 0; transform: rotate(2deg) translate(100px, 110px) scale(0.80); }
+  to   { opacity: 1; transform: rotate(2deg) translate(0, 0) scale(1); }
+}
+
 .ar-wrapper.is-ready #ar_digit_2a,
 .ar-wrapper.is-ready #ar_digit_0,
 .ar-wrapper.is-ready #ar_digit_2b,
@@ -505,11 +545,11 @@ body.is-visible {
 .ar-wrapper.is-ready #ar_obj1           { animation: ar-entry-fade 0.5s ease 0.06s both; }
 .ar-wrapper.is-ready #ar_obj2           { animation: ar-entry-fade 0.5s ease 0.12s both; }
 
-.ar-wrapper.is-ready #ar_right_a        { animation: ar-entry-fade 0.5s ease 0.10s both; }
-.ar-wrapper.is-ready #ar_right_b        { animation: ar-entry-fade 0.5s ease 0.14s both; }
-.ar-wrapper.is-ready #ar_right_c        { animation: ar-entry-fade 0.5s ease 0.18s both; }
-.ar-wrapper.is-ready #ar_right_d        { animation: ar-entry-fade 0.5s ease 0.20s both; }
-.ar-wrapper.is-ready #ar_right_e        { animation: ar-entry-fade 0.5s ease 0.22s both; }
+.ar-wrapper.is-ready #ar_right_a        { animation: ar-gather-a 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both; }
+.ar-wrapper.is-ready #ar_right_b        { animation: ar-gather-b 2.8s cubic-bezier(0.22, 1, 0.36, 1) 0.10s both; }
+.ar-wrapper.is-ready #ar_right_c        { animation: ar-gather-c 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+.ar-wrapper.is-ready #ar_right_d        { animation: ar-gather-d 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+.ar-wrapper.is-ready #ar_right_e        { animation: ar-gather-e 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
 
 .ar-wrapper.is-ready #ar_seasons_label  { animation: ar-entry-fade 0.4s ease 0.15s both; }
 

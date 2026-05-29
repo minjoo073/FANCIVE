@@ -13,31 +13,20 @@ img {
 }
 
 /* =============================================
-   FONT FACE — Switzer
+   FONT FACE
 ============================================= */
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Extralight.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Extralight.woff') format('woff');
-  font-weight: 200;
+  font-family: 'CabinetGrotesk';
+  src: url('assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Light.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Switzer';
-  src: url('assets/fonts/Switzer-Regular.woff2') format('woff2'),
-       url('assets/fonts/Switzer-Regular.woff') format('woff');
-  font-weight: 400;
+  font-family: 'SUIT';
+  src: url('assets/fonts/SUIT-Variable.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -50,7 +39,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -132,7 +121,7 @@ img.el {
 }
 
 .text {
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   color: #000000;
   letter-spacing: 0;
 }
@@ -182,8 +171,8 @@ img.el {
   left: 88px;
   top: 396px;
   width: 488px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 1.8;
   font-weight: 200;
 }
 
@@ -194,17 +183,18 @@ img.el {
   display: flex;
   align-items: baseline;
   gap: 25px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   font-weight: 200;
+  letter-spacing: 0.04em;
 }
 
 #left_mood2_text {
   left: 328px;
   top: 682px;
   width: 70px;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 17px;
+  line-height: 22px;
   font-weight: 300;
 }
 
@@ -214,7 +204,8 @@ img.el {
   width: 245px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 300;
+  font-weight: 200;
+  letter-spacing: 0.12em;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -225,16 +216,18 @@ img.el {
   top: 870px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 300;
+  font-weight: 200;
+  letter-spacing: 0.12em;
 }
 
 #left_page_number {
   left: 363px;
   top: 940px;
   width: 339px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   font-weight: 400;
+  letter-spacing: 0.06em;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -302,7 +295,8 @@ img.el {
   top: 49px;
   font-size: 20px;
   line-height: 26px;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 #right_collection {
@@ -310,7 +304,8 @@ img.el {
   top: 49px;
   font-size: 20px;
   line-height: 26px;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 #right_archive {
@@ -318,7 +313,8 @@ img.el {
   top: 49px;
   font-size: 20px;
   line-height: 26px;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 #right_category_text1 {
@@ -327,7 +323,8 @@ img.el {
   width: 194px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 300;
+  font-weight: 200;
+  letter-spacing: 0.12em;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -345,25 +342,25 @@ img.el {
 #right_desc2_text {
   left: 624px;
   top: 508px;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 1.7;
   font-weight: 300;
 }
 
 #right_desc3_text {
   left: 484px;
   top: 588px;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 200;
 }
 
 #right_story_text {
   left: 652px;
   top: 706px;
   width: 378px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 1.7;
   font-weight: 200;
 }
 
@@ -374,9 +371,10 @@ img.el {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 13px;
+  line-height: 20px;
   font-weight: 200;
+  letter-spacing: 0.04em;
   color: #888888;
 }
 
@@ -384,9 +382,10 @@ img.el {
   left: 39px;
   top: 941px;
   width: 569px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   font-weight: 400;
+  letter-spacing: 0.06em;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -442,7 +441,7 @@ html.skip-intro .intro-screen {
 .intro-wordmark {
   position: relative;
   z-index: 1;
-  font-family: 'Switzer', sans-serif;
+  font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   font-weight: 200;
   font-size: clamp(28px, 4vw, 52px);
   letter-spacing: 0.55em;
