@@ -34,7 +34,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #1a1816;
+  background: #F1F0F0;
   font-family: 'CabinetGrotesk', 'SUIT', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -202,7 +202,7 @@ body.is-visible #ld_desc_layer { opacity: 1; }
   position: absolute;
   left: 1737px;
   top: 14px;
-  width: 63px;
+  width: 110px;
   display: flex;
   flex-direction: column;
   font-size: 15px;
