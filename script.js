@@ -31,8 +31,6 @@
       p.style.opacity = '1';
     });
     document.querySelectorAll('.el').forEach(function (el) {
-      el.style.opacity = '1';
-      el.style.filter = 'none';
       el.style.animation = 'none';
       el.style.transform = '';
     });
