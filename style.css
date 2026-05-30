@@ -84,7 +84,7 @@ body {
   width: 783px;
   height: 966px;
   flex-shrink: 0;
-  background-image: url('assets/images/LEFT_PAPER.png');
+  background-image: url('assets/images/LEFT_PAPER.webp');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   overflow: visible;
@@ -95,7 +95,7 @@ body {
   width: 1134px;
   height: 967px;
   flex-shrink: 0;
-  background-image: url('assets/images/RIGHT_PAPER.png');
+  background-image: url('assets/images/RIGHT_PAPER.webp');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   overflow: visible;
