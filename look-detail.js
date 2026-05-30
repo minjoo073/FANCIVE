@@ -122,7 +122,7 @@
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
   function imgPath(id, pose) {
-    return 'assets/images/collection_sub/look_' + pad(id) + '_' + pose + '.png';
+    return 'assets/images/collection_sub/look_' + pad(id) + '_' + pose + '.webp';
   }
 
   function getHashId() {
