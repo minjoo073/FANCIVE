@@ -1,4 +1,6 @@
 (function () {
+  sessionStorage.setItem('introSeen', '1');
+
   var CANVAS_W = 1920;
   var CANVAS_H = 1080;
 
