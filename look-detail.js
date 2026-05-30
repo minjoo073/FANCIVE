@@ -233,10 +233,25 @@
         img.style.opacity = '0';
       });
       imgs.forEach(function (img, i) {
+        var delayDone = false;
+        var imgReady = img.complete && img.naturalWidth > 0;
+
+        function tryReveal() {
+          if (delayDone && imgReady) {
+            img.style.transition = 'opacity 0.9s ease';
+            img.style.opacity = '1';
+          }
+        }
+
         setTimeout(function () {
-          img.style.transition = 'opacity 0.9s ease';
-          img.style.opacity = '1';
+          delayDone = true;
+          tryReveal();
         }, 180 + i * 80);
+
+        if (!imgReady) {
+          img.addEventListener('load',  function () { imgReady = true; tryReveal(); });
+          img.addEventListener('error', function () { imgReady = true; tryReveal(); });
+        }
       });
     }
   }
