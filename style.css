@@ -658,12 +658,8 @@ html.skip-intro .intro-screen {
 #right_about,
 #right_collection,
 #right_archive {
-  cursor: default;
-  transition: opacity 0.9s ease, letter-spacing 0.9s ease;
-}
-
-#right_collection {
   cursor: pointer;
+  transition: opacity 0.9s ease, letter-spacing 0.9s ease;
 }
 
 #right_about:hover,
