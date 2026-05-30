@@ -16,13 +16,35 @@
   window.addEventListener('resize', scaleWrapper);
   scaleWrapper();
 
-  // Entry: fade out dark overlay, trigger image animations simultaneously
-  setTimeout(function () {
+  // Entry: wait for critical images then trigger animations
+  function triggerReady() {
     var overlay = document.getElementById('c-page-overlay');
     if (overlay) overlay.classList.add('is-gone');
     var wrapper = document.querySelector('.c-wrapper');
     if (wrapper) wrapper.classList.add('is-ready');
-  }, 60);
+  }
+
+  var criticalIds = ['c_hero_main', 'c_look01', 'c_look02', 'c_look03', 'c_look04', 'c_look05', 'c_look06'];
+  var imgs = criticalIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  var loaded = 0;
+  var total = imgs.length;
+
+  function onImgLoad() {
+    loaded++;
+    if (loaded >= total) triggerReady();
+  }
+
+  imgs.forEach(function(img) {
+    if (img.complete && img.naturalWidth > 0) {
+      onImgLoad();
+    } else {
+      img.addEventListener('load', onImgLoad);
+      img.addEventListener('error', onImgLoad);
+    }
+  });
+
+  // Fallback: start after 4s regardless
+  setTimeout(triggerReady, 4000);
 
   // 애니메이션 종료 후 fill 해제 — opacity:1 명시해야 초기 hidden state 덮어씀
   setTimeout(function () {
