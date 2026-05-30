@@ -22,7 +22,7 @@
   var introWordmark = document.getElementById('introWordmark');
 
   // ── Skip intro if already seen ────────────────────────
-  if (localStorage.getItem('introSeen')) {
+  if (sessionStorage.getItem('introSeen')) {
     // Remove intro immediately, show everything at once
     if (introScreen && introScreen.parentNode) {
       introScreen.parentNode.removeChild(introScreen);
@@ -41,7 +41,7 @@
     spread.classList.add('reveal-done');
   } else {
     // First visit — run full intro sequence
-    localStorage.setItem('introSeen', '1');
+    sessionStorage.setItem('introSeen', '1');
 
     // t=100ms  — hero starts blur-to-focus (3.0s transition)
     setTimeout(function () {
