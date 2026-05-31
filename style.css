@@ -659,12 +659,12 @@ html.skip-intro .intro-screen {
 #right_collection,
 #right_archive {
   cursor: pointer;
-  transition: opacity 0.9s ease, letter-spacing 0.9s ease;
+  transition: opacity 0.4s ease, letter-spacing 0.4s ease;
 }
 
 #right_about:hover,
 #right_collection:hover,
 #right_archive:hover {
-  opacity: 0.4;
-  letter-spacing: 0.05em;
+  opacity: 0.18;
+  letter-spacing: 0.12em;
 }

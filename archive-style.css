@@ -126,8 +126,8 @@ body.is-visible {
 }
 
 #ar_digit_6 {
-  left: 160px;
-  top: 680px;
+  left: 220px;
+  top: 760px;
   font-size: 220px;
   opacity: 0.065;
 }
@@ -235,7 +235,7 @@ body.is-visible {
 ============================================= */
 #ar_brand_logo {
   left: 81px;
-  top: 6px;
+  top: 24px;
   width: 120px;
   height: 36px;
   text-decoration: none;
@@ -258,7 +258,7 @@ body.is-visible {
 
 #ar_page_title {
   left: 765px;
-  top: 11px;
+  top: 28px;
   width: 180px;
   font-size: 26px;
   line-height: 30px;
@@ -269,7 +269,7 @@ body.is-visible {
 
 #ar_page_year {
   left: 1035px;
-  top: 16px;
+  top: 32px;
   width: 51px;
   font-size: 20px;
   line-height: 26px;
@@ -279,7 +279,7 @@ body.is-visible {
 
 #ar_menu_group {
   left: 1737px;
-  top: 14px;
+  top: 28px;
   width: 110px;
   display: flex;
   flex-direction: column;
