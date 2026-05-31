@@ -19,9 +19,11 @@
   scaleWrapper();
 
   function triggerReady() {
-    document.body.classList.add('is-visible');
-    var wrapper = document.querySelector('.ab-wrapper');
-    if (wrapper) wrapper.classList.add('is-ready');
+    setTimeout(function () {
+      document.body.classList.add('is-visible');
+      var wrapper = document.querySelector('.ab-wrapper');
+      if (wrapper) wrapper.classList.add('is-ready');
+    }, 300);
   }
 
   var criticalIds = ['ab_obj1', 'ab_obj2', 'ab_obj3'];
