@@ -30,7 +30,11 @@ img { display: block; border: none; }
 /* =============================================
    BASE
 ============================================= */
-html, body {
+html {
+  background: #1a1816;
+}
+
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
