@@ -72,7 +72,7 @@
 
   function overlayNavigate(url) {
     var overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:#1a1816;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.65s cubic-bezier(0.4,0,0.2,1)';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#F1F0F0;opacity:0;z-index:9999;pointer-events:all;transition:opacity 0.65s cubic-bezier(0.4,0,0.2,1)';
     document.body.appendChild(overlay);
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
