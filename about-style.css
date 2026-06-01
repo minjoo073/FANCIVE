@@ -232,11 +232,11 @@ body.is-visible {
   width: 110px;
   display: flex;
   flex-direction: column;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
   letter-spacing: 0.04em;
-  color: #555555;
+  color: #333333;
   z-index: 20;
 }
 

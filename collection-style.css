@@ -144,7 +144,7 @@ body {
 
 #c_look04 {
   left: 365px;
-  top: 255px;
+  top: 280px;
   width: 397px;
   height: 761px;
   object-fit: cover;
@@ -219,7 +219,7 @@ body {
 #c_idx01 { left: 352px; top: 103px; width: 26px; }
 #c_idx02 { left: 35px;  top: 474px; width: 26px; }
 #c_idx03 { left: 306px; top: 856px; width: 26px; }
-#c_idx04 { left: 470px; top: 346px; width: 26px; }
+#c_idx04 { left: 470px; top: 371px; width: 26px; }
 #c_idx05 { left: 870px; top: 565px; width: 26px; }
 #c_idx06 { left: 1221px; top: 721px; width: 26px; }
 
@@ -276,11 +276,11 @@ body {
   width: 110px;
   display: flex;
   flex-direction: column;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
   letter-spacing: 0.04em;
-  color: #555555;
+  color: #333333;
   z-index: 20;
 }
 
@@ -336,7 +336,7 @@ body {
 ============================================= */
 #c_brand_desc {
   left: 412px;
-  top: 95px;
+  top: 120px;
   width: 520px;
   font-size: 28px;
   line-height: 1.38;
@@ -347,7 +347,7 @@ body {
 
 #c_mood_note {
   left: 412px;
-  top: 186px;
+  top: 211px;
   width: 500px;
   font-size: 17px;
   line-height: 1.7;
