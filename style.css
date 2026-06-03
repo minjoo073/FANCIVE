@@ -444,7 +444,7 @@ html.skip-intro .intro-screen {
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  width: clamp(260px, 34vw, 520px);
+  width: clamp(360px, 46vw, 620px);
   height: auto;
   opacity: 0;
   filter: blur(6px);
